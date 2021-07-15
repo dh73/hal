@@ -163,6 +163,7 @@ namespace hal
         int mStartRecording;
         int mWaitCount;
         int mNextSingleStep;
+        long mStartTime;
         QElapsedTimer mElapsedTime;
         bool mRecordHashAttribute;
         bool mExecutingMacro;

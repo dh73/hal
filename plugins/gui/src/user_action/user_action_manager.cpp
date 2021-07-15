@@ -24,6 +24,7 @@ namespace hal
           mExecutingMacro(false),
           mDumpAction(nullptr)
     {
+        mStartTime = QDateTime::currentDateTime().toMSecsSinceEpoch();
         mElapsedTime.start();
         mSettingDumpAction = new SettingsItemCheckbox(
             "UserAction Debug",
@@ -103,6 +104,7 @@ namespace hal
                 xmlOut.setAutoFormatting(true);
                 xmlOut.writeStartDocument();
                 xmlOut.writeStartElement("actions");
+                xmlOut.writeAttribute("ts", QString::number(mStartTime));
 
                 for (int i=mStartRecording; i<n; i++)
                 {
