@@ -146,6 +146,8 @@ namespace hal
          * @param sig - Part of the macro file name.
          */
         void crashDump(int sig);
+        void saveUserActionsMacro();
+
 
         /// true, if action is triggered by user; false, if macro is executed or undo executed
         bool isUserTriggeredAction() const;

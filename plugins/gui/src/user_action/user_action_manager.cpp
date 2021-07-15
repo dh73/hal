@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <QThread>
 #include <QCoreApplication>
+#include <QDateTime>
 #include "gui/user_action/user_action.h"
 #include "gui/user_action/user_action_compound.h"
 #include "gui/user_action/action_open_netlist_file.h"
@@ -77,6 +78,17 @@ namespace hal
         mStartRecording = 0;
         mRecordHashAttribute = false;
         setStopRecording(QString("hal_crashdump_signal%1.xml").arg(sig));
+    }
+
+    void UserActionManager::saveUserActionsMacro()
+    {
+        QString timeFormat = "yyyy-MM-dd_HH-mm-ss";
+        QDateTime currentTime = QDateTime::currentDateTime();
+        QString currentTimeString = currentTime.toString(timeFormat);
+
+        mStartRecording = 0;
+        mRecordHashAttribute = true;
+        setStopRecording(QString("hal_study_%1.xml").arg(currentTimeString));
     }
 
     void UserActionManager::setStopRecording(const QString& macroFilename)
