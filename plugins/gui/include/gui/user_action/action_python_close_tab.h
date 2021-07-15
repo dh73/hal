@@ -9,6 +9,7 @@ namespace hal
     class ActionPythonCloseTab : public UserAction
     {
         u32 mPythonCodeEditorId;
+        QString mPythonCodeEditorContent = "";
     public:
         ActionPythonCloseTab(const u32& id_ = 0);
         QString tagname() const override;
@@ -16,6 +17,7 @@ namespace hal
         void writeToXml(QXmlStreamWriter& xmlOut) const override;
         void readFromXml(QXmlStreamReader& xmlIn) override;
         void addToHash(QCryptographicHash& cryptoHash) const override;
+        void setPlaintext(QString plaintext_);
     };
 
     /**
