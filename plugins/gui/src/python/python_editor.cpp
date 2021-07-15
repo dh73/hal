@@ -608,6 +608,7 @@ namespace hal
     void PythonEditor::discardTab(u32 pythonCodeEditorId)
     {
         ActionPythonCloseTab* act = new ActionPythonCloseTab(pythonCodeEditorId);
+        act->setPlaintext(getPythonCodeEditorById(pythonCodeEditorId)->toPlainText());
         act->exec();
     }
 
@@ -722,10 +723,11 @@ namespace hal
             pythonCodeEditorId = ++mMaxPythonCodeEditorId;
         } else {
             if(getPythonCodeEditorById(pythonCodeEditorId)) {
-                pythonCodeEditorId = ++mMaxPythonCodeEditorId;
+                getPythonCodeEditorById(pythonCodeEditorId)->setPlainText("");
+                return pythonCodeEditorId;
             }
             if(pythonCodeEditorId >= mMaxPythonCodeEditorId)
-                mMaxPythonCodeEditorId = pythonCodeEditorId + 1;
+                mMaxPythonCodeEditorId = pythonCodeEditorId;
         }
         PythonCodeEditor* editor = new PythonCodeEditor(pythonCodeEditorId);
         editor->setFontSize(mSettingFontSize->value().toInt());
