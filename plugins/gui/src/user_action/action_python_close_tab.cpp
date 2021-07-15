@@ -69,4 +69,9 @@ namespace hal
     {
         mPythonCodeEditorContent = plaintext_;
     }
+
+    void ActionPythonCloseTab::setTabText(QString tabtext_)
+    {
+        mPythonCodeEditorTabText = tabtext_;
+    }
 }

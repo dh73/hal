@@ -1,6 +1,8 @@
 #include "gui/user_action/action_python_new_tab.h"
+#include "gui/user_action/action_python_close_tab.h"
 #include "gui/gui_globals.h"
 #include "gui/python/python_editor.h"
+#include <QTabWidget>
 
 namespace hal
 {
@@ -30,6 +32,16 @@ namespace hal
     {
         u32 pythonCodeEditorId = gContentManager->getPythonEditorWidget()->newTab(mPythonCodeEditorId);
         mPythonCodeEditorId = pythonCodeEditorId;
+
+        if(mUseTabText) {
+            QTabWidget* tabWidget = gContentManager->getPythonEditorWidget()->getTabWidget();
+            tabWidget->setTabText(gContentManager->getPythonEditorWidget()->getTabIndexByPythonCodeEditorId(pythonCodeEditorId), mTabText);
+        }
+
+        // then create undo actions
+        ActionPythonCloseTab* act = new ActionPythonCloseTab(mPythonCodeEditorId);
+        mUndoAction = act;
+
         return UserAction::exec();
     }
 
@@ -50,5 +62,11 @@ namespace hal
             if (xmlIn.name() == "uid")
                 mPythonCodeEditorId = xmlIn.readElementText().toInt();
         }
+    }
+
+    void ActionPythonNewTab::setTabText(QString tabtext_)
+    {
+        mTabText = tabtext_;
+        mUseTabText = true;
     }
 }

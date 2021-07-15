@@ -9,6 +9,8 @@ namespace hal
     class ActionPythonNewTab : public UserAction
     {
         u32 mPythonCodeEditorId;
+        QString mTabText = "";
+        bool mUseTabText = false;
     public:
         ActionPythonNewTab(const u32& id_ = 0);
         QString tagname() const override;
@@ -16,6 +18,7 @@ namespace hal
         void writeToXml(QXmlStreamWriter& xmlOut) const override;
         void readFromXml(QXmlStreamReader& xmlIn) override;
         void addToHash(QCryptographicHash& cryptoHash) const override;
+        void setTabText(QString tabtext_);
     };
 
     /**

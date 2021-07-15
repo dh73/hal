@@ -10,6 +10,7 @@ namespace hal
     {
         u32 mPythonCodeEditorId;
         QString mPythonCodeEditorContent = "";
+        QString mPythonCodeEditorTabText = "";
     public:
         ActionPythonCloseTab(const u32& id_ = 0);
         QString tagname() const override;
@@ -18,6 +19,7 @@ namespace hal
         void readFromXml(QXmlStreamReader& xmlIn) override;
         void addToHash(QCryptographicHash& cryptoHash) const override;
         void setPlaintext(QString plaintext_);
+        void setTabText(QString tabtext_);
     };
 
     /**
