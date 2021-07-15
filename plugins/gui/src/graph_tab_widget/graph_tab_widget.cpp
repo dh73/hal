@@ -76,12 +76,14 @@ namespace hal
 
     GraphTabWidget::GraphTabWidget(QWidget* parent) : ContentWidget("Graph-Views", parent),
         mTabWidget(new QTabWidget()), mLayout(new QVBoxLayout()), mZoomFactor(1.2),
-        mModuleSelectCursor(false)
+        mSelectCursor(Select)
     {
         mContentLayout->addWidget(mTabWidget);
         mTabWidget->setTabsClosable(true);
         mTabWidget->setMovable(true);
+        mTabWidget->setContextMenuPolicy(Qt::CustomContextMenu);
 
+        connect(mTabWidget, &QTabWidget::customContextMenuRequested, this, &GraphTabWidget::handleCustomContextMenuRequested);
         connect(mTabWidget, &QTabWidget::tabCloseRequested, this, &GraphTabWidget::handleTabCloseRequested);
         connect(mTabWidget, &QTabWidget::currentChanged, this, &GraphTabWidget::handleTabChanged);
         connect(gGraphContextManager, &GraphContextManager::contextCreated, this, &GraphTabWidget::handleContextCreated);
@@ -255,19 +257,69 @@ namespace hal
         return -1;
     }
 
-    void GraphTabWidget::setModuleSelectCursor(bool on)
+    void GraphTabWidget::handleCustomContextMenuRequested(const QPoint &pos)
     {
-        mModuleSelectCursor = on;
-        int n = mTabWidget->count();
-        if (mModuleSelectCursor)
+        int index = mTabWidget->tabBar()->tabAt(pos);
+
+        if (index == -1)
+            return;
+
+        QMenu contextMenu("Context menu", this);
+
+        contextMenu.addAction("Close This Tab", [this, index](){
+            handleTabCloseRequested(index);
+        });
+
+        contextMenu.addAction("Close Other Tabs", [this, index](){
+            handleCloseTabsToRight(index);
+            handleCloseTabsToLeft(index);
+        });
+
+        contextMenu.addAction("Close Tabs To Right", [this, index](){
+            handleCloseTabsToRight(index);
+        });
+
+        contextMenu.addAction("Close Tabs To Left", [this, index](){
+            handleCloseTabsToLeft(index);
+        });
+
+        contextMenu.exec(mapToGlobal(pos));
+
+    }
+
+    void GraphTabWidget::handleCloseTabsToRight(int index)
+    {
+        // Close last tab until tab at index is the last tab
+        while (index != mTabWidget->count()-1)
+            handleTabCloseRequested(mTabWidget->count()-1);
+    }
+
+    void GraphTabWidget::handleCloseTabsToLeft(int index)
+    {
+        // Close first tab until tab at index is the first tab
+        while (index != 0)
         {
-            ;
-            QCursor modCurs(QPixmap(":/icons/module_cursor","PNG"));
-            for (int i=0; i<n; i++)
-                mTabWidget->widget(i)->setCursor(modCurs);
+            handleTabCloseRequested(0);
+            index-=1;
         }
-        else
+    }
+
+    void GraphTabWidget::setSelectCursor(int icurs)
+    {
+        mSelectCursor = (GraphCursor) icurs;
+        int n = mTabWidget->count();
+        if (mSelectCursor == Select)
+        {
             for (int i=0; i<n; i++)
                 mTabWidget->widget(i)->unsetCursor();
+        }
+        else
+        {
+            QCursor gcurs(mSelectCursor == PickModule
+                          ? QPixmap(":/icons/module_cursor","PNG")
+                          : QPixmap(":/icons/gate_cursor","PNG"));
+            for (int i=0; i<n; i++)
+                mTabWidget->widget(i)->setCursor(gcurs);
+        }
     }
 }

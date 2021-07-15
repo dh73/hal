@@ -23,36 +23,26 @@
 
 #pragma once
 
-#include "gui/content_widget/content_widget.h"
+#include "hal_core/defines.h"
+#include "hal_core/netlist/boolean_function.h"
 
-#include <QTableView>
+#include <string>
+#include <tuple>
 
-namespace hal
+namespace hal 
 {
-    class PluginModel;
-    class Toolbar;
-
-    /**
-     * @ingroup unused
-     * NOTE: The plugin manager widget is disabled in the current version.
-     */
-    class PluginManagerWidget : public ContentWidget
-    {
-        Q_OBJECT
-
-    public:
-        explicit PluginManagerWidget(QWidget* parent = nullptr);
-        void setPluginModel(PluginModel* mPluginModel);
-        virtual void setupToolbar(Toolbar* Toolbar);
-
-    private Q_SLOTS:
-        void onActionAddTriggered();
-        void onActionRemoveTriggered();
-
-    private:
-        PluginModel* mModel;
-        QAction* mAddAction;
-        QAction* mRemoveAction;
-        QTableView mTableView;
-    };
-}
+namespace SMT
+{
+namespace Translator 
+{
+	/**
+	 * Translates a Boolean function into a SMT-LIB compatible string.
+	 *
+	 * @param[in] function - Boolean function to translate.
+	 * @returns (1) status (true on success, false otherwise), and 
+	 *          (2) SMT-LIB compatible string.
+	 */
+	std::tuple<bool, std::string> translate_to_smt2(const BooleanFunction& function);
+}  // namespace Translator
+}  // namespace SMT
+}  // namespace hal
