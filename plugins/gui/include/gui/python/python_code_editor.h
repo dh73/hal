@@ -116,6 +116,12 @@ namespace hal
          */
         u32 id() const;
 
+        /**
+         * Set the current cursor position as well as restore marker
+         * @param pos - the position of cursor couted from start
+         */
+        void setCursorPosition(int pos);
+
     private Q_SLOTS:
         void handleTextChanged();
 

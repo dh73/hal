@@ -34,12 +34,11 @@ namespace hal
 
     bool ActionPythonTextChanged::exec()
     {
-        if(UserActionManager::instance()->isUserTriggeredAction()) {
-            PythonCodeEditor* pythonCodeEditor = gContentManager->getPythonEditorWidget()->getPythonCodeEditorById(mPythonCodeEditorId);
+        PythonCodeEditor* pythonCodeEditor = gContentManager->getPythonEditorWidget()->getPythonCodeEditorById(mPythonCodeEditorId);
+        if (pythonCodeEditor)
             pythonCodeEditor->setOldPlainText(mText);
-        }
 
-        if (mergeWithRecent())
+        if (UserActionManager::instance()->isUserTriggeredAction() && mergeWithRecent())
         {
             // caller should delete this action to avoid memory leak
             mMerged = true;
@@ -52,11 +51,11 @@ namespace hal
         }
 
         if(!UserActionManager::instance()->isUserTriggeredAction()) {
-            PythonCodeEditor* pythonCodeEditor = gContentManager->getPythonEditorWidget()->getPythonCodeEditorById(mPythonCodeEditorId);
             if(!pythonCodeEditor) {
                 gContentManager->getPythonEditorWidget()->newTab(mPythonCodeEditorId);
                 pythonCodeEditor = gContentManager->getPythonEditorWidget()->getPythonCodeEditorById(mPythonCodeEditorId);
                 if(!pythonCodeEditor) return false;
+                pythonCodeEditor->setOldPlainText(mText);
             }
             int tabId = gContentManager->getPythonEditorWidget()->getTabIndexByPythonCodeEditorId(pythonCodeEditor->id());
             // set current index, if wrong tab is selected
@@ -67,10 +66,9 @@ namespace hal
             pythonCodeEditor->setPlainText(mText);
 
             // set text cursor position
-            QTextCursor textCursor = pythonCodeEditor->textCursor();
-            textCursor.setPosition(mTextCursorPosition);
-            pythonCodeEditor->setTextCursor(textCursor);
+            pythonCodeEditor->setCursorPosition(mTextCursorPosition);
         }
+
         return UserAction::exec();
     }
 

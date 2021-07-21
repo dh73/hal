@@ -16,11 +16,11 @@
 #include <QTabWidget>
 
 //Debug
-#include <QDebug>
+//#include <QDebug>
 
 namespace hal
 {
-    PythonCodeEditor::PythonCodeEditor(u32 id, QWidget *parent) : CodeEditor(parent), mId(id), mOldPlaintext(""),
+    PythonCodeEditor::PythonCodeEditor(u32 id, QWidget *parent) : CodeEditor(parent), mId(id),
         mLastCursorPosition(0), mUuid(QUuid::createUuid())
     {
         QShortcut* redo_shortcut = new QShortcut(QKeySequence(tr("Ctrl+y")), this);
@@ -68,6 +68,14 @@ namespace hal
                 default:                QPlainTextEdit::keyPressEvent(e);
             }
         }
+    }
+
+    void PythonCodeEditor::setCursorPosition(int pos)
+    {
+        QTextCursor curs = textCursor();
+        curs.setPosition(pos);
+        setTextCursor(curs);
+        mLastCursorPosition = pos;
     }
 
     void PythonCodeEditor::handleShiftTabKeyPressed()
