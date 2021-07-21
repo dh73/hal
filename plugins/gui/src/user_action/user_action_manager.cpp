@@ -13,6 +13,8 @@
 #include "hal_core/utilities/log.h"
 #include <QTextCursor>
 
+#include "hal_version.h"
+
 namespace hal
 {
     UserActionManager* UserActionManager::inst = nullptr;
@@ -105,6 +107,7 @@ namespace hal
                 xmlOut.writeStartDocument();
                 xmlOut.writeStartElement("actions");
                 xmlOut.writeAttribute("ts", QString::number(mStartTime));
+                xmlOut.writeAttribute("halversion", QString::fromStdString(hal_version::version));
 
                 for (int i=mStartRecording; i<n; i++)
                 {
