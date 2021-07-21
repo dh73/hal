@@ -33,7 +33,9 @@ namespace hal
     {
         if(UserActionManager::instance()->isUserTriggeredAction())
         {
+            int textCursorPosition = this->textCursor().position();
             ActionPythonTextChanged* act = new ActionPythonTextChanged(mId, mOldPlaintext, toPlainText());
+            act->setTextCursorPosition(textCursorPosition);
             if(mLastKeyPressed == Qt::Key_Return) act->setLastKeyIsReturn();
             act->exec();
             if (act->wasMergedWithRecent())
@@ -352,7 +354,7 @@ namespace hal
         return mUuid;
     }
 
-    void PythonCodeEditor::setOldPlainText(const QString &oldText)
+    void PythonCodeEditor::setOldPlainText(const QString oldText)
     {
         mOldPlaintext = oldText;
     }

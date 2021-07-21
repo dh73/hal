@@ -649,6 +649,10 @@ namespace hal
     {
         ActionPythonCloseTab* act = new ActionPythonCloseTab(pythonCodeEditorId);
         act->setPlaintext(getPythonCodeEditorById(pythonCodeEditorId)->toPlainText());
+        QString tabText = mTabWidget->tabText(getTabIndexByPythonCodeEditorId(pythonCodeEditorId));
+        act->setTabText(tabText);
+        int lastTextCursorPosition = getPythonCodeEditorById(pythonCodeEditorId)->textCursor().position();
+        act->setLastTextCursorPosition(lastTextCursorPosition);
         act->exec();
     }
 

@@ -1,5 +1,5 @@
 #include "gui/user_action/action_python_text_changed.h"
-#include <QDebug>
+#include "gui/user_action/user_action_manager.h"
 #include <QTabWidget>
 #include "gui/gui_globals.h"
 #include "gui/python/python_editor.h"
@@ -24,7 +24,7 @@ namespace hal
     // maximum duration for single text change 10 sec
     qint64 ActionPythonTextChanged::sRecentTextChangeMsec = 10000;
 
-    ActionPythonTextChanged::ActionPythonTextChanged(const u32 &id_, const QString &oldtext_, const QString &text_)
+    ActionPythonTextChanged::ActionPythonTextChanged(const u32 &id_, const QString oldtext_, const QString &text_)
         : mOldText(oldtext_), mText(text_), mPythonCodeEditorId(id_), mLastKeyIsReturn(false), mMerged(false), mDuration(0)
     {
         if (id_)
@@ -45,7 +45,7 @@ namespace hal
             return true;
         }
         if(!mUndoAction) {
-            mUndoAction = new ActionPythonTextChanged(mPythonCodeEditorId, "", mText);
+            mUndoAction = new ActionPythonTextChanged(mPythonCodeEditorId, "", mOldText);
         }
 
         if(!UserActionManager::instance()->isUserTriggeredAction()) {
@@ -55,7 +55,12 @@ namespace hal
                 pythonCodeEditor = gContentManager->getPythonEditorWidget()->getPythonCodeEditorById(mPythonCodeEditorId);
                 if(!pythonCodeEditor) return false;
             }
+            int tabId = gContentManager->getPythonEditorWidget()->getTabIndexByPythonCodeEditorId(pythonCodeEditor->id());
+            // set current index, if wrong tab is selected
+            if(gContentManager->getPythonEditorWidget()->getTabWidget()->currentIndex() != tabId)
+                gContentManager->getPythonEditorWidget()->getTabWidget()->setCurrentIndex(tabId);
             pythonCodeEditor->setPlainText(mText);
+            pythonCodeEditor->textCursor().setPosition(mTextCursorPosition);
         }
         return UserAction::exec();
     }
@@ -75,6 +80,7 @@ namespace hal
         if (lastTextChanged->mPythonCodeEditorId != mPythonCodeEditorId) return false;
         lastTextChanged->mTimeStamp = uam->timeStamp();
         lastTextChanged->mText      = mText;
+        lastTextChanged->mTextCursorPosition = mTextCursorPosition;
         lastTextChanged->mDuration += msecSinceLastAction;
         return true;
     }
@@ -91,6 +97,8 @@ namespace hal
         xmlOut.writeTextElement("uid", QString::number(mPythonCodeEditorId));
         if (mDuration > 0)
             xmlOut.writeTextElement("duration", QString::number(mDuration));
+        if (mTextCursorPosition)
+            xmlOut.writeTextElement("textcursorposition", QString::number(mTextCursorPosition));
     }
 
     void ActionPythonTextChanged::readFromXml(QXmlStreamReader& xmlIn)
@@ -101,11 +109,18 @@ namespace hal
                 mText = xmlIn.readElementText();
             if (xmlIn.name() == "uid")
                 mPythonCodeEditorId = xmlIn.readElementText().toInt();
+            if (xmlIn.name() == "textcursorposition")
+                mTextCursorPosition = xmlIn.readElementText().toInt();
         }
     }
 
     void ActionPythonTextChanged::setLastKeyIsReturn()
     {
         mLastKeyIsReturn = true;
+    }
+
+    void ActionPythonTextChanged::setTextCursorPosition(int textCursorPosition)
+    {
+        mTextCursorPosition = textCursorPosition;
     }
 }

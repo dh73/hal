@@ -11,6 +11,7 @@ namespace hal
         u32 mPythonCodeEditorId;
         QString mPythonCodeEditorContent = "";
         QString mPythonCodeEditorTabText = "";
+        int mLastTextCursorPosition;
     public:
         ActionPythonCloseTab(const u32& id_ = 0);
         QString tagname() const override;
@@ -20,6 +21,7 @@ namespace hal
         void addToHash(QCryptographicHash& cryptoHash) const override;
         void setPlaintext(QString plaintext_);
         void setTabText(QString tabtext_);
+        void setLastTextCursorPosition(int lastTextCursorPosition);
     };
 
     /**

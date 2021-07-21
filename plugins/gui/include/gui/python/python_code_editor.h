@@ -100,7 +100,7 @@ namespace hal
          *
          * @param oldText - the old plaintext
          */
-        void setOldPlainText(const QString &oldText);
+        void setOldPlainText(const QString oldText);
 
         /**
          * Get PythonCodeEditorInstance by uuid
