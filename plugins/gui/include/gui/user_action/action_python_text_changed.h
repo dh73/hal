@@ -13,6 +13,7 @@ namespace hal
         QString mText;
         u32 mPythonCodeEditorId;
         int mTextCursorPosition;
+        int mLastCursorPosition;
 
         bool mLastKeyIsReturn;
         bool mMerged;
@@ -37,7 +38,7 @@ namespace hal
 
         void setLastKeyIsReturn();
 
-        void setTextCursorPosition(int textCursorPosition);
+        void setTextCursorPosition(int lastCursorPosition, int textCursorPosition);
     };
 
     /**

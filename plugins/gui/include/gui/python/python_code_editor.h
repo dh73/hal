@@ -218,6 +218,7 @@ namespace hal
         QString mOldPlaintext;
 
         int mLastKeyPressed;
+        int mLastCursorPosition;
 
         bool mBaseFileModified;
 

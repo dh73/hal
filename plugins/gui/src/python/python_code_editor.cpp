@@ -20,7 +20,8 @@
 
 namespace hal
 {
-    PythonCodeEditor::PythonCodeEditor(u32 id, QWidget *parent) : CodeEditor(parent), mId(id), mOldPlaintext(""), mUuid(QUuid::createUuid())
+    PythonCodeEditor::PythonCodeEditor(u32 id, QWidget *parent) : CodeEditor(parent), mId(id), mOldPlaintext(""),
+        mLastCursorPosition(0), mUuid(QUuid::createUuid())
     {
         QShortcut* redo_shortcut = new QShortcut(QKeySequence(tr("Ctrl+y")), this);
         connect(redo_shortcut, &QShortcut::activated, this, &PythonCodeEditor::handleRedoRequested);
@@ -35,7 +36,8 @@ namespace hal
         {
             int textCursorPosition = this->textCursor().position();
             ActionPythonTextChanged* act = new ActionPythonTextChanged(mId, mOldPlaintext, toPlainText());
-            act->setTextCursorPosition(textCursorPosition);
+            act->setTextCursorPosition(mLastCursorPosition, textCursorPosition);
+            mLastCursorPosition = textCursorPosition;
             if(mLastKeyPressed == Qt::Key_Return) act->setLastKeyIsReturn();
             act->exec();
             if (act->wasMergedWithRecent())

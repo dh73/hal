@@ -25,7 +25,8 @@ namespace hal
     qint64 ActionPythonTextChanged::sRecentTextChangeMsec = 10000;
 
     ActionPythonTextChanged::ActionPythonTextChanged(const u32 &id_, const QString oldtext_, const QString &text_)
-        : mOldText(oldtext_), mText(text_), mPythonCodeEditorId(id_), mTextCursorPosition(0), mLastKeyIsReturn(false), mMerged(false), mDuration(0)
+        : mOldText(oldtext_), mText(text_), mPythonCodeEditorId(id_), mTextCursorPosition(0), mLastCursorPosition(0),
+          mLastKeyIsReturn(false), mMerged(false), mDuration(0)
     {
         if (id_)
             setObject(UserActionObject(id_,UserActionObjectType::PythonCodeEditor));
@@ -45,7 +46,9 @@ namespace hal
             return true;
         }
         if(!mUndoAction) {
-            mUndoAction = new ActionPythonTextChanged(mPythonCodeEditorId, "", mOldText);
+            ActionPythonTextChanged* act = new ActionPythonTextChanged(mPythonCodeEditorId, "", mOldText);
+            act->setTextCursorPosition(mTextCursorPosition,mLastCursorPosition);
+            mUndoAction = act;
         }
 
         if(!UserActionManager::instance()->isUserTriggeredAction()) {
@@ -129,8 +132,9 @@ namespace hal
         mLastKeyIsReturn = true;
     }
 
-    void ActionPythonTextChanged::setTextCursorPosition(int textCursorPosition)
+    void ActionPythonTextChanged::setTextCursorPosition(int lastCursorPosition, int textCursorPosition)
     {
+        mLastCursorPosition = lastCursorPosition;
         mTextCursorPosition = textCursorPosition;
     }
 }

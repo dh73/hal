@@ -40,7 +40,7 @@ namespace hal
         ActionPythonNewTab* undoCreate = new ActionPythonNewTab(mPythonCodeEditorId);
         act->addAction(undoCreate);
         ActionPythonTextChanged* undoTextChange = new ActionPythonTextChanged(mPythonCodeEditorId, "", mPythonCodeEditorContent);
-        undoTextChange->setTextCursorPosition(mLastTextCursorPosition);
+        undoTextChange->setTextCursorPosition(mLastTextCursorPosition,mLastTextCursorPosition);
         act->addAction(undoTextChange);
         mUndoAction = act;
 
