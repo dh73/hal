@@ -11,6 +11,8 @@
 
 #include "gui/python/python_console_qss_adapter.h"
 
+#include "gui/user_action/action_python_console_command.h"
+
 namespace hal
 {
     PythonConsole::PythonConsole(QWidget* parent)
@@ -242,11 +244,13 @@ namespace hal
             mCurrentCompoundInput += input;
             if (mInCompoundPrompt)
             {
-                gPythonContext->interpret(mCurrentCompoundInput, true);
+                ActionPythonConsoleCommand* act = new ActionPythonConsoleCommand(mCurrentCompoundInput, true);
+                act->exec();
             }
             else
             {
-                gPythonContext->interpret(input, false);
+                ActionPythonConsoleCommand* act = new ActionPythonConsoleCommand(input, false);
+                act->exec();
             }
             mInCompoundPrompt     = false;
             mCurrentCompoundInput = "";
