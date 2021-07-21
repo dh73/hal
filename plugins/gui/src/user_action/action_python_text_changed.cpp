@@ -25,7 +25,7 @@ namespace hal
     qint64 ActionPythonTextChanged::sRecentTextChangeMsec = 10000;
 
     ActionPythonTextChanged::ActionPythonTextChanged(const u32 &id_, const QString oldtext_, const QString &text_)
-        : mOldText(oldtext_), mText(text_), mPythonCodeEditorId(id_), mLastKeyIsReturn(false), mMerged(false), mDuration(0)
+        : mOldText(oldtext_), mText(text_), mPythonCodeEditorId(id_), mTextCursorPosition(0), mLastKeyIsReturn(false), mMerged(false), mDuration(0)
     {
         if (id_)
             setObject(UserActionObject(id_,UserActionObjectType::PythonCodeEditor));
@@ -59,8 +59,14 @@ namespace hal
             // set current index, if wrong tab is selected
             if(gContentManager->getPythonEditorWidget()->getTabWidget()->currentIndex() != tabId)
                 gContentManager->getPythonEditorWidget()->getTabWidget()->setCurrentIndex(tabId);
+
+            // set text
             pythonCodeEditor->setPlainText(mText);
-            pythonCodeEditor->textCursor().setPosition(mTextCursorPosition);
+
+            // set text cursor position
+            QTextCursor textCursor = pythonCodeEditor->textCursor();
+            textCursor.setPosition(mTextCursorPosition);
+            pythonCodeEditor->setTextCursor(textCursor);
         }
         return UserAction::exec();
     }
@@ -109,6 +115,10 @@ namespace hal
                 mText = xmlIn.readElementText();
             if (xmlIn.name() == "uid")
                 mPythonCodeEditorId = xmlIn.readElementText().toInt();
+            if (xmlIn.name() == "duration")
+                // we don't need this value,
+                // but we have to read it, to read next start element
+                xmlIn.readElementText();
             if (xmlIn.name() == "textcursorposition")
                 mTextCursorPosition = xmlIn.readElementText().toInt();
         }
