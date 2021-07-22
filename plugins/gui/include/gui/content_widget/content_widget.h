@@ -227,6 +227,7 @@ namespace hal
 
     private:
         void closeEvent(QCloseEvent* event);
+        bool event(QEvent* event) override;
 
         QString mName;
         QIcon mIcon;

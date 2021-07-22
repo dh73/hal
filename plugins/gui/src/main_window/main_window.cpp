@@ -16,6 +16,7 @@
 #include "gui/settings/settings_manager.h"
 #include "gui/user_action/action_open_netlist_file.h"
 #include "gui/welcome_screen/welcome_screen.h"
+#include "gui/study_questionnaire/study_questionnaire.h"
 #include "hal_core/defines.h"
 #include "hal_core/netlist/gate.h"
 #include "hal_core/netlist/gate_library/gate_library_manager.h"
@@ -759,6 +760,17 @@ namespace hal
     void MainWindow::onActionQuitTriggered()
     {
         close();
+    }
+
+    bool MainWindow::event(QEvent *event)
+    {
+        if (event->type() == QEvent::WindowActivate)
+        {
+            StudyQuestionnaire::instance()->setWindowActivated();
+        } else if(event->type() == QEvent::WindowDeactivate) {
+            StudyQuestionnaire::instance()->setWindowDeactivated();
+        }
+        return QWidget::event(event);
     }
 
     void MainWindow::closeEvent(QCloseEvent* event)

@@ -442,7 +442,9 @@ namespace hal
          *
          * @param event - Qts close event
          */
-        void closeEvent(QCloseEvent* event);
+        void closeEvent(QCloseEvent* event) override;
+
+        bool event(QEvent* event) override;
 
         bool tryToCloseFile();
 

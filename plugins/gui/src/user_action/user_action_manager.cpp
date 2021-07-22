@@ -26,7 +26,7 @@ namespace hal
           mExecutingMacro(false),
           mDumpAction(nullptr)
     {
-        mStartTime = QDateTime::currentDateTime().toMSecsSinceEpoch();
+        mStartTime = QDateTime::currentDateTime().toSecsSinceEpoch();
         mElapsedTime.start();
         mSettingDumpAction = new SettingsItemCheckbox(
             "UserAction Debug",

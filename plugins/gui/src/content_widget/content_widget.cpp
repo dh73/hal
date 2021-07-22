@@ -3,6 +3,7 @@
 #include "gui/gui_utils/graphics.h"
 #include "gui/content_anchor/content_anchor.h"
 #include "gui/toolbar/toolbar.h"
+#include "gui/study_questionnaire/study_questionnaire.h"
 
 #include <QShortcut>
 #include <QStyle>
@@ -69,6 +70,17 @@ namespace hal
             mAnchor->close(this);
             Q_EMIT closed();
         }
+    }
+
+    bool ContentWidget::event(QEvent *event)
+    {
+        if (event->type() == QEvent::WindowActivate)
+        {
+            StudyQuestionnaire::instance()->setContentWidgetActivated(mName);
+        } else if(event->type() == QEvent::WindowDeactivate) {
+            StudyQuestionnaire::instance()->setContentWidgetDeactivated(mName);
+        }
+        return QWidget::event(event);
     }
 
     void ContentWidget::closeEvent(QCloseEvent* event){Q_UNUSED(event)}
