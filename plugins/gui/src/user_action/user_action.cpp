@@ -1,4 +1,5 @@
 #include "gui/user_action/user_action.h"
+#include "gui/study_questionnaire/study_questionnaire.h"
 
 namespace hal
 {
@@ -24,6 +25,9 @@ namespace hal
         UserActionManager* uam = UserActionManager::instance();
         mTimeStamp = uam->timeStamp();
         uam->addExecutedAction(this);
+        #ifdef HAL_STUDY
+            StudyQuestionnaire::instance()->setUserActionDone(tagname());
+        #endif
         return true;
     }
 

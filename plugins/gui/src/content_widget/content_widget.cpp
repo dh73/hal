@@ -3,7 +3,9 @@
 #include "gui/gui_utils/graphics.h"
 #include "gui/content_anchor/content_anchor.h"
 #include "gui/toolbar/toolbar.h"
-#include "gui/study_questionnaire/study_questionnaire.h"
+#ifdef HAL_STUDY
+    #include "gui/study_questionnaire/study_questionnaire.h"
+#endif
 
 #include <QShortcut>
 #include <QStyle>
@@ -74,12 +76,14 @@ namespace hal
 
     bool ContentWidget::event(QEvent *event)
     {
-        if (event->type() == QEvent::WindowActivate)
-        {
-            StudyQuestionnaire::instance()->setContentWidgetActivated(mName);
-        } else if(event->type() == QEvent::WindowDeactivate) {
-            StudyQuestionnaire::instance()->setContentWidgetDeactivated(mName);
-        }
+        #ifdef HAL_STUDY
+            if (event->type() == QEvent::WindowActivate)
+            {
+                StudyQuestionnaire::instance()->setContentWidgetActivated(mName);
+            } else if(event->type() == QEvent::WindowDeactivate) {
+                StudyQuestionnaire::instance()->setContentWidgetDeactivated(mName);
+            }
+        #endif
         return QWidget::event(event);
     }
 

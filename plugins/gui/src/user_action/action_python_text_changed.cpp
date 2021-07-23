@@ -3,6 +3,7 @@
 #include <QTabWidget>
 #include "gui/gui_globals.h"
 #include "gui/python/python_editor.h"
+#include "gui/study_questionnaire/study_questionnaire.h"
 
 namespace hal
 {
@@ -89,6 +90,11 @@ namespace hal
         lastTextChanged->mText      = mText;
         lastTextChanged->mTextCursorPosition = mTextCursorPosition;
         lastTextChanged->mDuration += msecSinceLastAction;
+
+        #ifdef HAL_STUDY
+            StudyQuestionnaire::instance()->setUserActionDone(tagname());
+        #endif
+
         return true;
     }
 

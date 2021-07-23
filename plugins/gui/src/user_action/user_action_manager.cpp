@@ -10,6 +10,7 @@
 #include "gui/user_action/action_open_netlist_file.h"
 #include "gui/user_action/action_unfold_module.h"
 #include "gui/settings/settings_items/settings_item_checkbox.h"
+#include "gui/study_questionnaire/study_questionnaire.h"
 #include "hal_core/utilities/log.h"
 #include <QTextCursor>
 
@@ -140,6 +141,9 @@ namespace hal
     {
         if (mNextSingleStep < 0) return;
 
+#ifdef HAL_STUDY
+        StudyQuestionnaire::instance()->setMacroPlay(true);
+#endif
         mExecutingMacro = true;
         UserAction* act = mActionHistory.at(mNextSingleStep);
         if (!act->exec())
@@ -158,6 +162,9 @@ namespace hal
         }
         if (++mNextSingleStep >= mActionHistory.size())
             endSingleStepMode();
+#ifdef HAL_STUDY
+        StudyQuestionnaire::instance()->setMacroPlay(false);
+#endif
         mExecutingMacro = false;
     }
 
@@ -177,6 +184,9 @@ namespace hal
         if (!loadMacroInternal(macroFilename)) return;
         int endMacro = mActionHistory.size();
         mExecutingMacro = true;
+#ifdef HAL_STUDY
+        StudyQuestionnaire::instance()->setMacroPlay(true);
+#endif
         for (int i=mStartRecording; i<endMacro; i++)
         {
             UserAction* act = mActionHistory.at(i);
@@ -193,6 +203,9 @@ namespace hal
                 QThread::msleep(10);
             }
         }
+#ifdef HAL_STUDY
+        StudyQuestionnaire::instance()->setMacroPlay(false);
+#endif
         mExecutingMacro = false;
         mStartRecording = -1;
     }

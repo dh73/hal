@@ -75,6 +75,8 @@ namespace hal
          */
         void setUserActionDone(const QString& userActionName);
 
+        void setMacroPlay(const bool macroPlay_);
+
     private:
         StudyQuestionnaire(QWidget *parent = nullptr);
 
@@ -90,7 +92,9 @@ namespace hal
         bool mHalFocusLost;
         uint mLastDialogShown;
         uint mLastHALFocusLost;
+        uint mLastUserActionExecutedTime;
         bool mMainWindowActivated;
+        bool mMacroPlay;
         QStringList mContentWidgetsActivated;
         QMap<QString,QCheckBox*> mQuestionnaireCheckboxes;
         QPlainTextEdit* mFurtherInformation;
