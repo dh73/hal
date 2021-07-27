@@ -194,7 +194,6 @@ namespace hal
          */
         void tabLoadFile(u32 index, QString fileName);
 
-        //added so that the speciallogcontentmanager has access to all the code editors
         /**
          * Access the underlying QTabWidget object, this class uses to handle the PythonCodeEditor tabs.
          *

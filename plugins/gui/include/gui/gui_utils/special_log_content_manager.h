@@ -32,8 +32,6 @@ class QTabWidget;
 namespace hal
 {
     class MainWindow;
-    class PythonEditor;
-    class PythonCodeEditor;
 
     /**
      * @ingroup gui
@@ -52,7 +50,7 @@ namespace hal
          * @param parent - The manager's parent.
          * @param python_editor - The editor which tabs are to be logged (dumped).
          */
-        SpecialLogContentManager(QObject* parent = nullptr, PythonEditor* python_editor = nullptr);
+        SpecialLogContentManager(QObject* parent = nullptr);
 
         /**
          * The default destructor.
@@ -64,14 +62,7 @@ namespace hal
          * It takes a screenshot consisting of every top-level-widget of hal and saves it
          * to the created directory in an interval that is specified when calling startLogging(int msec).
          */
-        void safeScreenshot();
-
-        /**
-         * Creates (if it does not exist already) a directory named after the currently opened file.
-         * It takes the content of every python editor tab, combines them into a single file
-         * and saves it to the created directory in an interval that is specified when calling startLogging(int msec).
-         */
-        void safePythonEditor();
+        void saveScreenshot();
 
         /**
          * Starts the logging process of the manager by specifying an interval in which to log the content.
@@ -82,10 +73,8 @@ namespace hal
 
     private:
         QTimer* mTimer;
-        PythonEditor* mPythonEditor;
         //either save it in the same directory (eg. /SpecialLogs) or split it into something
-        //like (SpecialLogs/Screenshots and SpecialLogs/PyhthonContent)
+        //like (SpecialLogs/Screenshots)
         QString mScreenshotSubPath;
-        QString mPythonContentSubPath;
     };
 }
