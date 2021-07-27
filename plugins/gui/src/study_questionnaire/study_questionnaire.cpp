@@ -39,16 +39,18 @@ namespace hal
         // remove questionmark from title bar, it is not implemented and only confusing
         setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
         mLayout = new QVBoxLayout(this);
-        QString titleString = QString("No action has been taken in HAL for a while.\nPlease tell us, if you have worked on the task outside of HAL.");
+        QString titleString = QString("No action has been taken in HAL for a while.\nTell us, if you have worked on the task outside of HAL.\nPlease select all checkboxes that apply.");
         mLayout->addWidget(new QLabel(titleString,this));
 
         mCheckBoxLayout = new QVBoxLayout();
         mLayout->addLayout(mCheckBoxLayout);
-        addCheckBox(QString("research_library"), QString("I did some research on the library used."));
-        addCheckBox(QString("research_hal"), QString("I did some research on the HAL Python API."));
-        addCheckBox(QString("python_code_external"), QString("I worked on the python code in an external editor."));
-        addCheckBox(QString("explore_netlist_external"), QString("I manually explored the netlist in an external editor."));
-        addCheckBox(QString("break"), QString("I took a break."));
+        addCheckBox(QString("hal_research"), QString("I did some research on the HAL Python API / read the Coding Guide."));
+        addCheckBox(QString("task_code_external"), QString("I worked on the python code in an external editor."));
+        addCheckBox(QString("task_explore_netlist_external"), QString("I manually explored the netlist in an external editor."));
+        addCheckBox(QString("task_description"), QString("I read task related materials / the task description."));
+        addCheckBox(QString("other_supplementary_material"), QString("I read supplementary materials / paper."));
+        addCheckBox(QString("other_web_research"), QString("I did some web research. Please add further information."));
+        addCheckBox(QString("other_break"), QString("I took a break."));
 
         mLayout->addWidget(new QLabel(QString("If you like, please add further information:"),this));
         mFurtherInformation = new QPlainTextEdit();
