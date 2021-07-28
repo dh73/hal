@@ -1,6 +1,8 @@
 #pragma once
 #include "user_action.h"
 
+#include <QUuid>
+
 namespace hal
 {
     /**
@@ -9,6 +11,7 @@ namespace hal
     class ActionPythonExecuteFile : public UserAction
     {
         u32 mPythonCodeEditorId;
+        QUuid mRef;
     public:
         ActionPythonExecuteFile(u32 id_ = 0);
         QString tagname() const override;

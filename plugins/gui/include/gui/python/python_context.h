@@ -26,6 +26,7 @@
 #include "gui/python/python_console.h"
 
 #include <QString>
+#include <QUuid>
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wshadow"
@@ -148,6 +149,9 @@ namespace hal
          */
         void updateNetlist();
 
+        void setRefLastExecution(QUuid reflastexecution_) { mRefLastExecution = reflastexecution_; };
+        QUuid getRefLastExecution() { return mRefLastExecution; }
+
     private:
         void initializeContext(py::dict* context);
 
@@ -163,5 +167,7 @@ namespace hal
 
         PythonConsole* mConsole;
         bool mTriggerReset = false;
+
+        QUuid mRefLastExecution;
     };
 }    // namespace hal

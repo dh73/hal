@@ -23,10 +23,13 @@ namespace hal
         : mInput(input_), mMultipleExpressions(multipleExpressions_)
     {
         mWaitForReady = true;
+
+        mRef = QUuid::createUuid();
     }
 
     bool ActionPythonConsoleCommand::exec()
     {
+        gPythonContext->setRefLastExecution(mRef);
         gPythonContext->interpret(mInput, mMultipleExpressions);
         return UserAction::exec();
     }
@@ -38,6 +41,7 @@ namespace hal
 
     void ActionPythonConsoleCommand::writeToXml(QXmlStreamWriter& xmlOut) const
     {
+        xmlOut.writeAttribute("ref", mRef.toString());
         xmlOut.writeTextElement("command", mInput);
         xmlOut.writeTextElement("multipleexpressions", QString::number(mMultipleExpressions));
     }

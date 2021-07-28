@@ -1,6 +1,8 @@
 #pragma once
 #include "user_action.h"
 
+#include <QUuid>
+
 namespace hal
 {
     /**
@@ -10,6 +12,7 @@ namespace hal
     {
         QString mInput;
         bool mMultipleExpressions;
+        QUuid mRef;
     public:
         ActionPythonConsoleCommand(const QString& input_ = QString(), const bool& multipleExpressions_ = false);
         QString tagname() const override;

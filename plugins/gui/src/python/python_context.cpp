@@ -20,6 +20,11 @@
 #include <node.h>
 #include <parsetok.h>
 
+#ifdef HAL_STUDY
+    #include "gui/user_action/action_study_python_std_output.h"
+    #include "gui/user_action/action_study_python_err_output.h"
+#endif
+
 extern grammar _PyParser_Grammar;
 
 namespace hal
@@ -199,6 +204,12 @@ namespace hal
         {
             mConsole->handleStdout(output);
         }
+#ifdef HAL_STUDY
+        ActionStudyPythonStdOutput* act = new ActionStudyPythonStdOutput(0, output, mRefLastExecution);
+        act->exec();
+        if (act->wasMergedWithRecent())
+            delete act;
+#endif
     }
 
     void PythonContext::forwardError(const QString& output)
@@ -208,6 +219,12 @@ namespace hal
         {
             mConsole->handleError(output);
         }
+#ifdef HAL_STUDY
+        ActionStudyPythonErrOutput* act = new ActionStudyPythonErrOutput(0, output, mRefLastExecution);
+        act->exec();
+        if (act->wasMergedWithRecent())
+            delete act;
+#endif
     }
 
     void PythonContext::forwardClear()

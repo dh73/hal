@@ -24,12 +24,15 @@ namespace hal
     {
         mWaitForReady = true;
 
+        mRef = QUuid::createUuid();
+
         if (id_)
             setObject(UserActionObject(id_,UserActionObjectType::PythonCodeEditor));
     }
 
     bool ActionPythonExecuteFile::exec()
     {
+        gPythonContext->setRefLastExecution(mRef);
         gContentManager->getPythonEditorWidget()->runScript(mPythonCodeEditorId);
         return UserAction::exec();
     }
@@ -41,6 +44,7 @@ namespace hal
 
     void ActionPythonExecuteFile::writeToXml(QXmlStreamWriter& xmlOut) const
     {
+        xmlOut.writeAttribute("ref", mRef.toString());
         xmlOut.writeTextElement("uid", QString::number(mPythonCodeEditorId));
     }
 
