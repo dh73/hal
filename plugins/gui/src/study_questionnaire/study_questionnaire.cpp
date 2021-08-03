@@ -11,7 +11,9 @@
 namespace hal
 {
     StudyQuestionnaire* StudyQuestionnaire::inst = nullptr;
-    const uint mMinInactivityTime = 5 * 60; // min inactivity time is 10 minutes
+    const uint mMinInactivityTime = 5 * 60; // min inactivity time is 5 minutes
+    const uint mMinFocusLostTime = 3 * 60; // min time focus was lost is 3 minutes
+    const uint mMinDialogShownTime = 5 * 60; // make sure dialog is not shown again, if less then 5 minutes ago
 
     StudyQuestionnaire::StudyQuestionnaire(QWidget *parent)
         : QDialog(parent), mHalFocusLost(false), mLastDialogShown(0), mLastHALFocusLost(0), mLastUserActionExecutedTime(0), mDuration(0), mMainWindowActivated(true), mMacroPlay(false)
@@ -111,18 +113,27 @@ namespace hal
         // don't show if macro is currently executed
         if(mMacroPlay) return;
 
-        uint diffSecs = QDateTime::currentDateTime().toSecsSinceEpoch() - mMinInactivityTime;
+        uint curSecs = QDateTime::currentDateTime().toSecsSinceEpoch();
+        uint diffSecsInactivity = curSecs - mMinInactivityTime;
+        uint diffSecsFocusLost = curSecs - mMinFocusLostTime;
+        uint diffSecsDialogShown = curSecs - mMinDialogShownTime;
 
+        /**
+         * if... else condition checks different scenarios
+         * if main window and no other content is activated, focus lost variables will be set
+         * if focus is not lost, last user action is a specific time ago and the dialog has been inactive for a while, show dialog
+         * if focus was lost, but now a hal window is active, check if focus has been lost for a specific time and show dialog
+         * */
         if(!mMainWindowActivated && mContentWidgetsActivated.isEmpty()) {
             mLastHALFocusLost = QDateTime::currentDateTime().toSecsSinceEpoch();
             mHalFocusLost = true;
-        } else if(!mHalFocusLost && mLastUserActionExecutedTime < diffSecs && mLastDialogShown < diffSecs) {
+        } else if(!mHalFocusLost && mLastUserActionExecutedTime < diffSecsInactivity && mLastDialogShown < diffSecsDialogShown) {
             mDuration = QDateTime::currentDateTime().toSecsSinceEpoch() - mLastUserActionExecutedTime;
             mLastDialogShown = QDateTime::currentDateTime().toSecsSinceEpoch();
             exec();
         } else if(mHalFocusLost) {
             mHalFocusLost = false;
-            if(mLastDialogShown < diffSecs && mLastHALFocusLost < diffSecs)
+            if(mLastDialogShown < diffSecsDialogShown && mLastHALFocusLost < diffSecsFocusLost)
             {
                 mDuration = QDateTime::currentDateTime().toSecsSinceEpoch() - mLastHALFocusLost;
                 mLastDialogShown = QDateTime::currentDateTime().toSecsSinceEpoch();
@@ -136,22 +147,21 @@ namespace hal
         mLastDialogShown = QDateTime::currentDateTime().toSecsSinceEpoch();
         if(QDialog::Accepted == resultCode) {
             QMap<QString, QCheckBox*>::iterator it;
-            QStringList* listCheckboxes = new QStringList();
+            QStringList listCheckboxes = QStringList();
             for(it = mQuestionnaireCheckboxes.begin(); it != mQuestionnaireCheckboxes.end(); ++it) {
                 QString key = it.key();
                 QCheckBox* checkBox = it.value();
 
                 if(checkBox->isChecked()) {
-                    listCheckboxes->append(key);
+                    listCheckboxes.append(key);
                     checkBox->setChecked(false);
                 }
             }
 
-            ActionStudyQuestionnaire* act = new ActionStudyQuestionnaire(*listCheckboxes, mFurtherInformation->toPlainText(), mDuration);
+            ActionStudyQuestionnaire* act = new ActionStudyQuestionnaire(listCheckboxes, mFurtherInformation->toPlainText(), mDuration);
             act->exec();
 
-            mFurtherInformation->setPlainText("");
-            delete listCheckboxes;
+            mFurtherInformation->clear();
         }
     }
 }
