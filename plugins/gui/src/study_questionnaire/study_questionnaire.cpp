@@ -11,10 +11,10 @@
 namespace hal
 {
     StudyQuestionnaire* StudyQuestionnaire::inst = nullptr;
-    const uint mMinInactivityTime = 10 * 60; // min inactivity time is 10 minutes
+    const uint mMinInactivityTime = 5 * 60; // min inactivity time is 10 minutes
 
     StudyQuestionnaire::StudyQuestionnaire(QWidget *parent)
-        : QDialog(parent), mHalFocusLost(false), mLastDialogShown(0), mLastHALFocusLost(0), mLastUserActionExecutedTime(0), mMainWindowActivated(true), mMacroPlay(false)
+        : QDialog(parent), mHalFocusLost(false), mLastDialogShown(0), mLastHALFocusLost(0), mLastUserActionExecutedTime(0), mDuration(0), mMainWindowActivated(true), mMacroPlay(false)
     {
         connect(this, SIGNAL(finished(int)), this, SLOT(questionnaireClosed(int)));
     }
@@ -117,12 +117,14 @@ namespace hal
             mLastHALFocusLost = QDateTime::currentDateTime().toSecsSinceEpoch();
             mHalFocusLost = true;
         } else if(!mHalFocusLost && mLastUserActionExecutedTime < diffSecs && mLastDialogShown < diffSecs) {
+            mDuration = QDateTime::currentDateTime().toSecsSinceEpoch() - mLastUserActionExecutedTime;
             mLastDialogShown = QDateTime::currentDateTime().toSecsSinceEpoch();
             exec();
         } else if(mHalFocusLost) {
             mHalFocusLost = false;
             if(mLastDialogShown < diffSecs && mLastHALFocusLost < diffSecs)
             {
+                mDuration = QDateTime::currentDateTime().toSecsSinceEpoch() - mLastHALFocusLost;
                 mLastDialogShown = QDateTime::currentDateTime().toSecsSinceEpoch();
                 exec();
             }
@@ -145,7 +147,7 @@ namespace hal
                 }
             }
 
-            ActionStudyQuestionnaire* act = new ActionStudyQuestionnaire(*listCheckboxes, mFurtherInformation->toPlainText());
+            ActionStudyQuestionnaire* act = new ActionStudyQuestionnaire(*listCheckboxes, mFurtherInformation->toPlainText(), mDuration);
             act->exec();
 
             mFurtherInformation->setPlainText("");

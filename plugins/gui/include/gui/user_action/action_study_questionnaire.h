@@ -10,8 +10,9 @@ namespace hal
     {
         QList<QString> mCheckedBoxes;
         QString mFurtherInformation;
+        uint mDuration;
     public:
-        ActionStudyQuestionnaire(QStringList checkedBoxes_ = QStringList(), QString furtherInformation_ = QString());
+        ActionStudyQuestionnaire(QStringList checkedBoxes_ = QStringList(), QString furtherInformation_ = QString(), uint duration_ = 0);
         QString tagname() const override;
         void writeToXml(QXmlStreamWriter& xmlOut) const override;
         void readFromXml(QXmlStreamReader& xmlIn) override;

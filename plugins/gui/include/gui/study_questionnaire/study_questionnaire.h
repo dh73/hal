@@ -93,6 +93,7 @@ namespace hal
         uint mLastDialogShown;
         uint mLastHALFocusLost;
         uint mLastUserActionExecutedTime;
+        uint mDuration;
         bool mMainWindowActivated;
         bool mMacroPlay;
         QStringList mContentWidgetsActivated;

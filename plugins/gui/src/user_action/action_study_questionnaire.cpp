@@ -17,8 +17,8 @@ namespace hal
         return ActionStudyQuestionnaireFactory::sFactory->tagname();
     }
 
-    ActionStudyQuestionnaire::ActionStudyQuestionnaire(QStringList checkedBoxes_, QString furtherInformation_) :
-        mCheckedBoxes(checkedBoxes_), mFurtherInformation(furtherInformation_)
+    ActionStudyQuestionnaire::ActionStudyQuestionnaire(QStringList checkedBoxes_, QString furtherInformation_, uint duration_) :
+        mCheckedBoxes(checkedBoxes_), mFurtherInformation(furtherInformation_), mDuration(duration_)
     { }
 
     void ActionStudyQuestionnaire::addToHash(QCryptographicHash& cryptoHash) const
@@ -30,6 +30,7 @@ namespace hal
 
     void ActionStudyQuestionnaire::writeToXml(QXmlStreamWriter& xmlOut) const
     {
+        xmlOut.writeAttribute("duration", QString::number(mDuration));
         xmlOut.writeTextElement("checkboxes", mCheckedBoxes.join(",").toUtf8());
         xmlOut.writeTextElement("furtherinformation", mFurtherInformation);
     }
