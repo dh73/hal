@@ -79,6 +79,13 @@
         <file alias="undo2">icons/0104-undo2.svg</file>
         <file alias="module_cursor">icons/module_cursor.png</file>
         <file alias="gate_cursor">icons/gate_cursor.png</file>
+        <file alias="study_api">icons/api.svg</file>
+        <file alias="study_netlist">icons/circuit-board.svg</file>
+        <file alias="study_break">icons/coffee.svg</file>
+        <file alias="study_task">icons/list.svg</file>
+        <file alias="study_paper">icons/paper.svg</file>
+        <file alias="study_python">icons/python.svg</file>
+        <file alias="study_research">icons/browser.svg</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="spinner">images/oval.svg</file>

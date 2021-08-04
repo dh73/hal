@@ -1,5 +1,8 @@
 #include "gui/study_questionnaire/study_questionnaire.h"
 #include "gui/user_action/action_study_questionnaire.h"
+#include "gui/gui_utils/graphics.h"
+#include "gui/main_window/main_window.h"
+#include "gui/settings/settings_items/settings_item_dropdown.h"
 
 #include <QPushButton>
 #include <QPlainTextEdit>
@@ -16,9 +19,19 @@ namespace hal
     const uint mMinDialogShownTime = 5 * 60; // make sure dialog is not shown again, if less then 5 minutes ago
 
     StudyQuestionnaire::StudyQuestionnaire(QWidget *parent)
-        : QDialog(parent), mHalFocusLost(false), mLastDialogShown(0), mLastHALFocusLost(0), mLastUserActionExecutedTime(0), mDuration(0), mMainWindowActivated(true), mMacroPlay(false)
+        : QDialog(parent), mHalFocusLost(false), mLastDialogShown(0), mLastHALFocusLost(0), mLastUserActionExecutedTime(0), mDuration(0), mMainWindowActivated(true), mMacroPlay(false), mStyleInitialized(false)
     {
+        // const values for icon styling
+        mQuestionnaireCheckboxesIcons.insert("hal_research", QList<QString *>({&mApiIconStyle, &mApiIconPath}));
+        mQuestionnaireCheckboxesIcons.insert("task_code_external", QList<QString *>({&mPythonIconStyle, &mPythonIconPath}));
+        mQuestionnaireCheckboxesIcons.insert("task_explore_netlist_external", QList<QString *>({&mNetlistIconStyle, &mNetlistIconPath}));
+        mQuestionnaireCheckboxesIcons.insert("task_description", QList<QString *>({&mTaskIconStyle, &mTaskIconPath}));
+        mQuestionnaireCheckboxesIcons.insert("other_supplementary_material", QList<QString *>({&mPaperIconStyle, &mPaperIconPath}));
+        mQuestionnaireCheckboxesIcons.insert("other_web_research", QList<QString *>({&mResearchIconStyle, &mResearchIconPath}));
+        mQuestionnaireCheckboxesIcons.insert("other_break", QList<QString *>({&mBreakIconStyle, &mBreakIconPath}));
+
         connect(this, SIGNAL(finished(int)), this, SLOT(questionnaireClosed(int)));
+        connect(MainWindow::sSettingStyle,&SettingsItemDropdown::intChanged,this,&StudyQuestionnaire::handleStyleChanged);
     }
 
     StudyQuestionnaire* StudyQuestionnaire::instance()
@@ -163,5 +176,168 @@ namespace hal
 
             mFurtherInformation->clear();
         }
+    }
+
+    void StudyQuestionnaire::handleStyleChanged()
+    {
+        QMap<QString, QCheckBox*>::iterator it;
+        QStringList listCheckboxes = QStringList();
+        for(it = mQuestionnaireCheckboxes.begin(); it != mQuestionnaireCheckboxes.end(); ++it) {
+            QString key = it.key();
+            QCheckBox* checkBox = it.value();
+
+            QList<QString *> list = mQuestionnaireCheckboxesIcons.value(key);
+            checkBox->setIcon(gui_utility::getStyledSvgIcon(*list.at(0), *list.at(1)));
+        }
+    }
+
+    int StudyQuestionnaire::exec()
+    {
+        if(!mStyleInitialized) {
+            handleStyleChanged();
+            mStyleInitialized = true;
+        }
+        return QDialog::exec();
+    }
+
+    // Icon properties from here:
+    QString StudyQuestionnaire::apiIconPath() const
+    {
+        return mApiIconPath;
+    }
+
+    QString StudyQuestionnaire::apiIconStyle() const
+    {
+        return mApiIconStyle;
+    }
+
+    QString StudyQuestionnaire::breakIconPath() const
+    {
+        return mBreakIconPath;
+    }
+
+    QString StudyQuestionnaire::breakIconStyle() const
+    {
+        return mBreakIconStyle;
+    }
+
+    QString StudyQuestionnaire::netlistIconPath() const
+    {
+        return mNetlistIconPath;
+    }
+
+    QString StudyQuestionnaire::netlistIconStyle() const
+    {
+        return mNetlistIconStyle;
+    }
+
+    QString StudyQuestionnaire::paperIconPath() const
+    {
+        return mPaperIconPath;
+    }
+
+    QString StudyQuestionnaire::paperIconStyle() const
+    {
+        return mPaperIconStyle;
+    }
+
+    QString StudyQuestionnaire::pythonIconPath() const
+    {
+        return mPythonIconPath;
+    }
+
+    QString StudyQuestionnaire::pythonIconStyle() const
+    {
+        return mPythonIconStyle;
+    }
+
+    QString StudyQuestionnaire::researchIconPath() const
+    {
+        return mResearchIconPath;
+    }
+
+    QString StudyQuestionnaire::researchIconStyle() const
+    {
+        return mResearchIconStyle;
+    }
+
+    QString StudyQuestionnaire::taskIconPath() const
+    {
+        return mTaskIconPath;
+    }
+
+    QString StudyQuestionnaire::taskIconStyle() const
+    {
+        return mTaskIconStyle;
+    }
+
+    void StudyQuestionnaire::setApiIconPath(const QString& path)
+    {
+        mApiIconPath = path;
+    }
+
+    void StudyQuestionnaire::setApiIconStyle(const QString& style)
+    {
+        mApiIconStyle = style;
+    }
+
+    void StudyQuestionnaire::setBreakIconPath(const QString& path)
+    {
+        mBreakIconPath = path;
+    }
+
+    void StudyQuestionnaire::setBreakIconStyle(const QString& style)
+    {
+        mBreakIconStyle = style;
+    }
+
+    void StudyQuestionnaire::setNetlistIconPath(const QString& path)
+    {
+        mNetlistIconPath = path;
+    }
+
+    void StudyQuestionnaire::setNetlistIconStyle(const QString& style)
+    {
+        mNetlistIconStyle = style;
+    }
+
+    void StudyQuestionnaire::setPaperIconPath(const QString& path)
+    {
+        mPaperIconPath = path;
+    }
+
+    void StudyQuestionnaire::setPaperIconStyle(const QString& style)
+    {
+        mPaperIconStyle = style;
+    }
+
+    void StudyQuestionnaire::setPythonIconPath(const QString& path)
+    {
+        mPythonIconPath = path;
+    }
+
+    void StudyQuestionnaire::setPythonIconStyle(const QString& style)
+    {
+        mPythonIconStyle = style;
+    }
+
+    void StudyQuestionnaire::setResearchIconPath(const QString& path)
+    {
+        mResearchIconPath = path;
+    }
+
+    void StudyQuestionnaire::setResearchIconStyle(const QString& style)
+    {
+        mResearchIconStyle = style;
+    }
+
+    void StudyQuestionnaire::setTaskIconPath(const QString& path)
+    {
+        mTaskIconPath = path;
+    }
+
+    void StudyQuestionnaire::setTaskIconStyle(const QString& style)
+    {
+        mTaskIconStyle = style;
     }
 }

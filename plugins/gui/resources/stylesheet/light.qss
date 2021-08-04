@@ -1066,6 +1066,30 @@ hal--PythonEditor
     qproperty-newFileIconPath: ":/icons/new-file";
 }
 
+hal--StudyQuestionnaire
+{
+    qproperty-apiIconStyle: "all->#000000";
+    qproperty-apiIconPath: ":/icons/study_api";
+
+    qproperty-breakIconStyle: "all->#000000";
+    qproperty-breakIconPath: ":/icons/study_break";
+
+    qproperty-netlistIconStyle: "all->#000000";
+    qproperty-netlistIconPath: ":/icons/study_netlist";
+
+    qproperty-paperIconStyle: "all->#000000";
+    qproperty-paperIconPath: ":/icons/study_paper";
+
+    qproperty-pythonIconStyle: "all->#000000";
+    qproperty-pythonIconPath: ":/icons/study_python";
+
+    qproperty-researchIconStyle: "all->#000000";
+    qproperty-researchIconPath: ":/icons/study_research";
+
+    qproperty-taskIconStyle: "all->#000000";
+    qproperty-taskIconPath: ":/icons/study_task";
+}
+
 hal--GroupingManagerWidget
 {
     qproperty-disabledIconStyle: "all->#515050";

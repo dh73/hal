@@ -41,6 +41,20 @@ namespace hal
     class StudyQuestionnaire : public QDialog
     {
         Q_OBJECT
+        Q_PROPERTY(QString apiIconPath READ apiIconPath WRITE setApiIconPath)
+        Q_PROPERTY(QString apiIconStyle READ apiIconStyle WRITE setApiIconStyle)
+        Q_PROPERTY(QString breakIconPath READ breakIconPath WRITE setBreakIconPath)
+        Q_PROPERTY(QString breakIconStyle READ breakIconStyle WRITE setBreakIconStyle)
+        Q_PROPERTY(QString netlistIconPath READ netlistIconPath WRITE setNetlistIconPath)
+        Q_PROPERTY(QString netlistIconStyle READ netlistIconStyle WRITE setNetlistIconStyle)
+        Q_PROPERTY(QString paperIconPath READ paperIconPath WRITE setPaperIconPath)
+        Q_PROPERTY(QString paperIconStyle READ paperIconStyle WRITE setPaperIconStyle)
+        Q_PROPERTY(QString pythonIconPath READ pythonIconPath WRITE setPythonIconPath)
+        Q_PROPERTY(QString pythonIconStyle READ pythonIconStyle WRITE setPythonIconStyle)
+        Q_PROPERTY(QString researchIconPath READ researchIconPath WRITE setResearchIconPath)
+        Q_PROPERTY(QString researchIconStyle READ researchIconStyle WRITE setResearchIconStyle)
+        Q_PROPERTY(QString taskIconPath READ taskIconPath WRITE setTaskIconPath)
+        Q_PROPERTY(QString taskIconStyle READ taskIconStyle WRITE setTaskIconStyle)
     public:
 
         /**
@@ -77,6 +91,216 @@ namespace hal
 
         void setMacroPlay(const bool macroPlay_);
 
+        void handleStyleChanged();
+
+        // =====================================================================
+        //   Q_PROPERTY functions
+        // =====================================================================
+
+        /** @name Q_PROPERTY Functions
+         */
+        ///@{
+
+        /**
+         * Q_PROPERTY READ function for the 'study api'-icon path.
+         *
+         * @returns the 'study api'-icon path
+         */
+        QString apiIconPath() const;
+
+        /**
+         * Q_PROPERTY READ function for the 'study api'-icon style.
+         *
+         * @returns the 'study api'-icon style
+         */
+        QString apiIconStyle() const;
+
+        /**
+         * Q_PROPERTY READ function for the 'study break'-icon path.
+         *
+         * @returns the 'study break'-icon path
+         */
+        QString breakIconPath() const;
+
+        /**
+         * Q_PROPERTY READ function for the 'study break'-icon style.
+         *
+         * @returns the 'study break'-icon style
+         */
+        QString breakIconStyle() const;
+
+        /**
+         * Q_PROPERTY READ function for the 'study netlist'-icon path.
+         *
+         * @returns the 'study netlist'-icon path
+         */
+        QString netlistIconPath() const;
+
+        /**
+         * Q_PROPERTY READ function for the 'study netlist'-icon style.
+         *
+         * @returns the 'study netlist'-icon style
+         */
+        QString netlistIconStyle() const;
+
+        /**
+         * Q_PROPERTY READ function for the 'study paper'-icon path.
+         *
+         * @returns the 'study paper'-icon path
+         */
+        QString paperIconPath() const;
+
+        /**
+         * Q_PROPERTY READ function for the 'study paper'-icon style.
+         *
+         * @returns the 'study paper'-icon style
+         */
+        QString paperIconStyle() const;
+
+        /**
+         * Q_PROPERTY READ function for the 'study python'-icon path.
+         *
+         * @returns the 'study python'-icon path
+         */
+        QString pythonIconPath() const;
+
+        /**
+         * Q_PROPERTY READ function for the 'study python'-icon style.
+         *
+         * @returns the 'study python'-icon style
+         */
+        QString pythonIconStyle() const;
+
+        /**
+         * Q_PROPERTY READ function for the 'study research'-icon path.
+         *
+         * @returns the 'study research'-icon path
+         */
+        QString researchIconPath() const;
+
+        /**
+         * Q_PROPERTY READ function for the 'study research'-icon style.
+         *
+         * @returns the 'study research'-icon style
+         */
+        QString researchIconStyle() const;
+
+        /**
+         * Q_PROPERTY READ function for the 'study task'-icon path.
+         *
+         * @returns the 'study task'-icon path
+         */
+        QString taskIconPath() const;
+
+        /**
+         * Q_PROPERTY READ function for the 'study task'-icon style.
+         *
+         * @returns the 'study task'-icon style
+         */
+        QString taskIconStyle() const;
+
+        /**
+         * Q_PROPERTY WRITE function for the 'study api'-icon path.
+         *
+         * @param path - the new path
+         */
+        void setApiIconPath(const QString& path);
+
+        /**
+         * Q_PROPERTY WRITE function for the 'study api'-icon style.
+         *
+         * @param style - the new style
+         */
+        void setApiIconStyle(const QString& style);
+
+        /**
+         * Q_PROPERTY WRITE function for the 'study break'-icon path.
+         *
+         * @param path - the new path
+         */
+        void setBreakIconPath(const QString& path);
+
+        /**
+         * Q_PROPERTY WRITE function for the 'study break'-icon style.
+         *
+         * @param style - the new style
+         */
+        void setBreakIconStyle(const QString& style);
+
+        /**
+         * Q_PROPERTY WRITE function for the 'study netlist'-icon path.
+         *
+         * @param path - the new path
+         */
+        void setNetlistIconPath(const QString& path);
+
+        /**
+         * Q_PROPERTY WRITE function for the 'study netlist'-icon style.
+         *
+         * @param style - the new style
+         */
+        void setNetlistIconStyle(const QString& style);
+
+        /**
+         * Q_PROPERTY WRITE function for the 'study Paper'-icon path.
+         *
+         * @param path - the new path
+         */
+        void setPaperIconPath(const QString& path);
+
+        /**
+         * Q_PROPERTY WRITE function for the 'study Paper'-icon style.
+         *
+         * @param style - the new style
+         */
+        void setPaperIconStyle(const QString& style);
+
+        /**
+         * Q_PROPERTY WRITE function for the 'study Python'-icon path.
+         *
+         * @param path - the new path
+         */
+        void setPythonIconPath(const QString& path);
+
+        /**
+         * Q_PROPERTY WRITE function for the 'study Python'-icon style.
+         *
+         * @param style - the new style
+         */
+        void setPythonIconStyle(const QString& style);
+
+        /**
+         * Q_PROPERTY WRITE function for the 'study Research'-icon path.
+         *
+         * @param path - the new path
+         */
+        void setResearchIconPath(const QString& path);
+
+        /**
+         * Q_PROPERTY WRITE function for the 'study Research'-icon style.
+         *
+         * @param style - the new style
+         */
+        void setResearchIconStyle(const QString& style);
+
+        /**
+         * Q_PROPERTY WRITE function for the 'study Task'-icon path.
+         *
+         * @param path - the new path
+         */
+        void setTaskIconPath(const QString& path);
+
+        /**
+         * Q_PROPERTY WRITE function for the 'study Task'-icon style.
+         *
+         * @param style - the new style
+         */
+        void setTaskIconStyle(const QString& style);
+        ///@}
+
+    public Q_SLOTS:
+        virtual int exec() override;
+
     private:
         StudyQuestionnaire(QWidget *parent = nullptr);
 
@@ -96,9 +320,33 @@ namespace hal
         uint mDuration;
         bool mMainWindowActivated;
         bool mMacroPlay;
+        bool mStyleInitialized;
         QStringList mContentWidgetsActivated;
         QMap<QString,QCheckBox*> mQuestionnaireCheckboxes;
         QPlainTextEdit* mFurtherInformation;
+
+        QString mApiIconStyle;
+        QString mApiIconPath;
+
+        QString mBreakIconStyle;
+        QString mBreakIconPath;
+
+        QString mNetlistIconStyle;
+        QString mNetlistIconPath;
+
+        QString mPaperIconStyle;
+        QString mPaperIconPath;
+
+        QString mPythonIconStyle;
+        QString mPythonIconPath;
+
+        QString mResearchIconStyle;
+        QString mResearchIconPath;
+
+        QString mTaskIconStyle;
+        QString mTaskIconPath;
+
+        QMap<QString,QList<QString *>> mQuestionnaireCheckboxesIcons;
     private Q_SLOTS:
         void questionnaireClosed(int resultCode);
     };
