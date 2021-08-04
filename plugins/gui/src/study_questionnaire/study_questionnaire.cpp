@@ -15,8 +15,8 @@ namespace hal
 {
     StudyQuestionnaire* StudyQuestionnaire::inst = nullptr;
     const uint mMinInactivityTime = 5 * 60; // min inactivity time is 5 minutes
-    const uint mMinFocusLostTime = 3 * 60; // min time focus was lost is 3 minutes
-    const uint mMinDialogShownTime = 5 * 60; // make sure dialog is not shown again, if less then 5 minutes ago
+    const uint mMinFocusLostTime = 1 * 60; // min time focus was lost is 3 minutes
+    const uint mMinDialogShownTime = 1 * 60; // make sure dialog is not shown again, if less then 5 minutes ago
 
     StudyQuestionnaire::StudyQuestionnaire(QWidget *parent)
         : QDialog(parent), mHalFocusLost(false), mLastDialogShown(0), mLastHALFocusLost(0), mLastUserActionExecutedTime(0), mDuration(0), mMainWindowActivated(true), mMacroPlay(false), mStyleInitialized(false)
