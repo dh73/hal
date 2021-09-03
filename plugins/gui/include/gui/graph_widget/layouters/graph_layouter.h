@@ -317,6 +317,7 @@ namespace hal
         void drawNetsEndpoint(StandardGraphicsNet::Lines &lines, u32 id);
         void drawNetsIsolated(u32 id, Net *n, const EndpointList& epl);
         void updateSceneRect();
+        static void setGatePosition(const QPoint* p, const Node& nd);
         static bool verifyModulePort(const Net *n, const Node& modNode, bool isModInput);
 
         bool boxExists(const int x, const int y) const;

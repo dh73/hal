@@ -89,7 +89,19 @@ namespace hal
         mNodeToPositionMap.insert(n, p);
         mPositionToNodeMap.insert(p, n);
 
+        setGatePosition(&p,n);
         //manual relayout call needed
+    }
+
+    void GraphLayouter::setGatePosition(const QPoint* p, const Node& nd)
+    {
+        if (nd.type() != Node::Gate) return;
+        Gate* g = gNetlist->get_gate_by_id(nd.id());
+        if (!g) return;
+        if (!p)
+            g->set_location(std::make_pair(-1,-1));
+        else
+            g->set_location(std::make_pair(p->x(),p->y()));
     }
 
     void GraphLayouter::swapNodePositions(const Node &n1, const Node &n2)
@@ -105,6 +117,9 @@ namespace hal
 
         mPositionToNodeMap.insert(p1, n2);
         mPositionToNodeMap.insert(p2, n1);
+
+        setGatePosition(&p1,n2);
+        setGatePosition(&p2,n1);
     }
 
     void GraphLayouter::removeNodeFromMaps(const Node &n)
@@ -114,6 +129,7 @@ namespace hal
             QPoint old_p = mNodeToPositionMap.value(n);
             mNodeToPositionMap.remove(n);
             mPositionToNodeMap.remove(old_p);
+            setGatePosition(nullptr,n);
         }
     }
 
