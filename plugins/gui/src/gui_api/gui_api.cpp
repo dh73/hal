@@ -428,4 +428,13 @@ namespace hal
     {
         gSelectionRelay->clearAndUpdate();
     }
+
+    void GuiApi::createNewView(const std::string name){
+        QString qstr = QString::fromStdString(name);
+        UserActionCompound* act = new UserActionCompound;
+        act->setUseCreatedObject();
+        act->addAction(new ActionCreateObject(UserActionObjectType::Context,qstr));
+        act->exec();
+        return;
+    }
 }

@@ -435,6 +435,12 @@ PYBIND11_PLUGIN(hal_gui)
        Deselect all gates, nets and modules in the graph view of the GUI.
 )");
 
+    py_gui_api.def("createNewView", &GuiApi::createNewView, py::arg("name"), R"(
+       creates a new empty view in the GUI.
+
+       :param string name: Name of the newly created view.
+)");
+
 #ifndef PYBIND11_MODULE
     return m.ptr();
 #endif    // PYBIND11_MODULE

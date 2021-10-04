@@ -26,7 +26,8 @@
 #include "hal_core/netlist/gate.h"
 #include "hal_core/netlist/net.h"
 #include "hal_core/netlist/module.h"
-
+#include "gui/user_action/action_create_object.h"
+#include "gui/user_action/user_action_compound.h"
 
 #include <vector>
 #include <tuple>
@@ -528,6 +529,12 @@ namespace hal
          * @param modules - A list of modules. These modules will be removed from the selection.
          */
         void deselect(const std::vector<Gate*>& gates, const std::vector<Net*>& nets, const std::vector<Module*>& modules);
+
+        /**
+         * @brief creates a new view
+         * @param name - Name of the view
+         */
+        void createNewView(const std::string name);
 
     Q_SIGNALS:
         /**
