@@ -32,11 +32,11 @@ namespace hal
     void ActionRenameObject::writeToXml(QXmlStreamWriter& xmlOut) const
     {
         xmlOut.writeTextElement("name", mNewName);
-        if (mObject.type() == UserActionObjectType::Pin && mPortType != NoPort)
-        {
-            xmlOut.writeTextElement("netid", QString::number(mNetId));
-            xmlOut.writeTextElement("porttype", mPortType == Input ? "input" : "output");
-        }
+//        if (mObject.type() == UserActionObjectType::Pin && mPortType != NoPort)
+//        {
+//            xmlOut.writeTextElement("netid", QString::number(mNetId));
+//            xmlOut.writeTextElement("porttype", mPortType == Input ? "input" : "output");
+//        }
     }
 
     void ActionRenameObject::readFromXml(QXmlStreamReader& xmlIn)
@@ -45,10 +45,10 @@ namespace hal
         {
             if (xmlIn.name() == "name")
                 mNewName = xmlIn.readElementText();
-            if (xmlIn.name() == "netid")
-                mNetId = xmlIn.readElementText().toInt();
-            if (xmlIn.name() == "porttype")
-                mPortType = (xmlIn.readElementText() == "input") ? Input : Output;
+//            if (xmlIn.name() == "netid")
+//                mNetId = xmlIn.readElementText().toInt();
+//            if (xmlIn.name() == "porttype")
+//                mPortType = (xmlIn.readElementText() == "input") ? Input : Output;
         }
     }
 
@@ -106,37 +106,33 @@ namespace hal
                 break;
             case UserActionObjectType::Pin:
                 mod = gNetlist->get_module_by_id(mObject.id());
-                net = gNetlist->get_net_by_id(mNetId);
-                if (mod && net)
+                if(mod && mod->get_pin(mPinOrPinGroupIdentifier.toStdString()))
                 {
-                    ModulePin* pin;
-                    switch (mPortType)
-                    {
-                        case NoPort:
-                            return false;
-                        case Input:
-                        case Output:
-                            pin     = mod->get_pin(net);
-                            oldName = QString::fromStdString(pin->get_name());
-                            mod->set_pin_name(pin, mNewName.toStdString());
-                            break;
-                    }
+                    oldName = mPinOrPinGroupIdentifier;
+                    mod->set_pin_name(mod->get_pin(mPinOrPinGroupIdentifier.toStdString()), mNewName.toStdString());
                 }
                 else
                     return false;
                 break;
             case UserActionObjectType::PinGroup:
-                // TODO @Sebastian implement
-                return false;
+                mod = gNetlist->get_module_by_id(mObject.id());
+                if(mod && mod->get_pin_group(mPinOrPinGroupIdentifier.toStdString()))
+                {
+                    oldName = mPinOrPinGroupIdentifier;
+                    mod->set_pin_group_name(mod->get_pin_group(mPinOrPinGroupIdentifier.toStdString()), mNewName.toStdString());
+                }
+                else
+                    return false;
+                break;
             default:
                 return false;
         }
+
         ActionRenameObject* undo = new ActionRenameObject(oldName);
         undo->setObject(mObject);
-        if (mPortType != NoPort)
+        if(mObject.type() == UserActionObjectType::Pin || mObject.type() == UserActionObjectType::PinGroup)
         {
-            undo->mNetId    = mNetId;
-            undo->mPortType = mPortType;
+            undo->mPinOrPinGroupIdentifier = mNewName;
         }
         mUndoAction = undo;
         return UserAction::exec();

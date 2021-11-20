@@ -24,6 +24,7 @@
 #pragma once
 #include "user_action.h"
 #include <QString>
+#include "hal_core/netlist/pins/module_pin.h" //includes pin_group
 
 namespace hal
 {
@@ -39,8 +40,13 @@ namespace hal
     class ActionRenameObject : public UserAction
     {
         QString mNewName;
-        u32 mNetId;
-        enum PortType { NoPort, Input, Output } mPortType;
+
+        //both for pin and pinGroup (disadv.: inconsistent if core renames the object
+        //after a gui-operation (undo does not work)->better save the group/pin itself?
+        QString mPinOrPinGroupIdentifier;
+//        PinGroup<ModulePin*>* mPinGroup;
+//        ModulePin* mPin;
+
     public:
         /**
          * Action constructor.
@@ -48,7 +54,7 @@ namespace hal
          * @param name - The new name
          */
         ActionRenameObject(const QString& name=QString())
-            : mNewName(name), mNetId(0), mPortType(NoPort) {;}
+            : mNewName(name), mPinOrPinGroupIdentifier("") {;}
         bool exec() override;
         QString tagname() const override;
         void writeToXml(QXmlStreamWriter& xmlOut) const override;
@@ -56,18 +62,11 @@ namespace hal
         void addToHash(QCryptographicHash& cryptoHash) const override;
 
         /**
-         * If the object to rename is a port, this function specifies the port by the connected input net.
+         * If the object to rename is a pin or pingroup, the current name is used to identify the object.
          *
-         * @param id - The id of the input net
+         * @param oldName - The current name.
          */
-        void setInputNetId(u32 id)  { mPortType=Input;  mNetId=id; }
-
-        /**
-         * If the object to rename is a port, this function specifies the port by the connected output net.
-         *
-         * @param id - The id of the output net
-         */
-        void setOutputNetId(u32 id) { mPortType=Output; mNetId=id; }
+        void setPinOrPinGroupIdentifier(QString oldName) {mPinOrPinGroupIdentifier = oldName;}
     };
 
     /**
