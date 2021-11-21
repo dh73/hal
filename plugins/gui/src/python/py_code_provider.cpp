@@ -319,4 +319,34 @@ namespace hal
         return buildPyCode(groupingCodePrefix, suffix, groupingId);
     }
 
+    QString PyCodeProvider::pyCodeGuiSelectedGates()
+    {
+        return QString("gui.getSelectedGates()");
+    }
+
+    QString PyCodeProvider::pyCodeGuiSelectedGateIds()
+    {
+        return QString("gui.getSelectedGateIds()");
+    }
+
+    QString PyCodeProvider::pyCodeGuiSelectedNets()
+    {
+        return QString("gui.getSelectedNets()");
+    }
+
+    QString PyCodeProvider::pyCodeGuiSelectedNetIds()
+    {
+        return QString("gui.getSelectedNetIds()");
+    }
+
+    QString PyCodeProvider::pyCodeGuiSelectedModules()
+    {
+        return QString("gui.getSelectedModules()");
+    }
+
+    QString PyCodeProvider::pyCOdeGuiSelectedModuleIds()
+    {
+        return QString("gui.getSelectedModuleIds()");
+    }
+
 } // namespace hal

@@ -6,6 +6,7 @@
 #include "gui/user_action/action_create_object.h"
 #include "gui/user_action/action_add_items_to_object.h"
 #include "gui/user_action/user_action_compound.h"
+#include "gui/python/py_code_provider.h"
 
 #include <QApplication>
 #include <QClipboard>
@@ -75,11 +76,11 @@ namespace hal
     void SelectionTreeView::handleCustomContextMenuRequested(const QPoint& point)
     {
         QModelIndex index = indexAt(point);
+        QMenu menu;
+        bool shouldBeDisplayed = false;
 
         if (index.isValid())
         {
-            QMenu menu;
-
             SelectionTreeItem* item = itemFromIndex(index);
 
             if (item)
@@ -117,9 +118,34 @@ namespace hal
             }
 
             menu.addAction("Focus item in Graph View", [this, item]() { Q_EMIT focusItemClicked(item); });
-
-            menu.exec(viewport()->mapToGlobal(point));
+            shouldBeDisplayed = true;
         }
+
+        //index-independant actions (extracting selected items)->displayed even if not clicked on an item
+        if((gSelectionRelay->numberSelectedNets() + gSelectionRelay->numberSelectedGates() + gSelectionRelay->numberSelectedModules()) > 0)
+        {
+            shouldBeDisplayed = true;
+            if(index.isValid())//actions above exist, add seperator/section
+                menu.addSection("Extracting selected items");
+        }
+        if(gSelectionRelay->numberSelectedGates() > 0)
+        {
+            menu.addAction(QIcon(":/icons/python"), "Extract selected gates", [](){QApplication::clipboard()->setText(PyCodeProvider::pyCodeGuiSelectedGates());});
+            menu.addAction(QIcon(":/icons/python"), "Extract selected gate ids", [](){QApplication::clipboard()->setText(PyCodeProvider::pyCodeGuiSelectedGateIds());});
+        }
+        if(gSelectionRelay->numberSelectedNets() > 0)
+        {
+            menu.addAction(QIcon(":/icons/python"), "Extract selected nets", [](){QApplication::clipboard()->setText(PyCodeProvider::pyCodeGuiSelectedNets());});
+            menu.addAction(QIcon(":/icons/python"), "Extract selected net ids", [](){QApplication::clipboard()->setText(PyCodeProvider::pyCodeGuiSelectedNetIds());});
+        }
+        if(gSelectionRelay->numberSelectedModules() > 0)
+        {
+            menu.addAction(QIcon(":/icons/python"), "Extract selected modules", [](){QApplication::clipboard()->setText(PyCodeProvider::pyCodeGuiSelectedModules());});
+            menu.addAction(QIcon(":/icons/python"), "Extract selected module ids", [](){QApplication::clipboard()->setText(PyCodeProvider::pyCOdeGuiSelectedModuleIds());});
+        }
+
+        if(shouldBeDisplayed)
+            menu.exec(viewport()->mapToGlobal(point));
     }
 
     void SelectionTreeView::handleIsolationViewAction(const SelectionTreeItem* sti)

@@ -89,6 +89,13 @@ namespace hal
         static QString pyCodeGroupingName(u32 groupingId);
         static QString pyCodeGroupingId(u32 groupingId);
 
+        static QString pyCodeGuiSelectedGates();
+        static QString pyCodeGuiSelectedGateIds();
+        static QString pyCodeGuiSelectedNets();
+        static QString pyCodeGuiSelectedNetIds();
+        static QString pyCodeGuiSelectedModules();
+        static QString pyCOdeGuiSelectedModuleIds();
+
     private:
         static QString buildPyCode(const QString& prefix, const QString& suffix, u32 id);
 
