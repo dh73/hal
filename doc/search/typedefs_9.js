@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['writerfactory_34768',['WriterFactory',['../namespacehal_1_1gate__library__writer__manager.html#a92363bf0588ef91ae7dda26d8db34403',1,'hal::gate_library_writer_manager::WriterFactory()'],['../namespacehal_1_1netlist__writer__manager.html#a65494ac5303bc472d87e8be3b4a44505',1,'hal::netlist_writer_manager::WriterFactory()']]]
+  ['nm_5fman_5ft_37931',['Nm_Man_t',['../simplification__abc_8cpp.html#a94ff1ee7f27a9a8e95226ded9133c78f',1,'simplification_abc.cpp']]]
 ];

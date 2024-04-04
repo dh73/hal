@@ -39,5 +39,9 @@ var utils_8h =
     [ "to_vector", "utils_8h.html#ad08c09cde6e4c84be543db4fac49f08c", null ],
     [ "toggle_bit", "utils_8h.html#a4a7452b760ebd68235319a6db5ff8965", null ],
     [ "trim", "utils_8h.html#a3b3244bd8945cb61cfa299c32686a601", null ],
-    [ "which", "utils_8h.html#abe865cd13e526c5228f269a9c7b2629b", null ]
+    [ "unordered_vector_erase", "utils_8h.html#a99d0bad47b8889780fe90db4c3308b77", null ],
+    [ "vectors_have_same_content", "utils_8h.html#a387d8f01579a42674ccd58d8651d9342", null ],
+    [ "which", "utils_8h.html#abe865cd13e526c5228f269a9c7b2629b", null ],
+    [ "wrapped_stoul", "utils_8h.html#a91c042ba653895c25f31a95e8050cb5b", null ],
+    [ "wrapped_stoull", "utils_8h.html#aa9335da615de06a7a371e86cb8ca10a0", null ]
 ];

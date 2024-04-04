@@ -1,11 +1,12 @@
 var group__user__action =
 [
     [ "ActionAddItemsToObject", "classhal_1_1_action_add_items_to_object.html", [
-      [ "ActionAddItemsToObject", "classhal_1_1_action_add_items_to_object.html#a47b8c130772c8a2bc51953ce9332130b", null ],
+      [ "ActionAddItemsToObject", "classhal_1_1_action_add_items_to_object.html#a6591c951c651993368bc81c52f31225a", null ],
       [ "addToHash", "classhal_1_1_action_add_items_to_object.html#acbf6bfb0668c7cbbcb16be295d93b6dc", null ],
       [ "exec", "classhal_1_1_action_add_items_to_object.html#a694fce180fe6fc756a70ca35d0542510", null ],
       [ "readFromXml", "classhal_1_1_action_add_items_to_object.html#ac2f544b4001353c823f184219b34344e", null ],
       [ "setPlacementHint", "classhal_1_1_action_add_items_to_object.html#a9c5a670fe7fa42e256fea342e6302d30", null ],
+      [ "setUsedInCreateContext", "classhal_1_1_action_add_items_to_object.html#a8c32b7da73f5e821a017622b2568d4e4", null ],
       [ "tagname", "classhal_1_1_action_add_items_to_object.html#ab6afd75b5138ac9845842a8d633662aa", null ],
       [ "writeToXml", "classhal_1_1_action_add_items_to_object.html#a5e17ecda6c926726231959663e87d024", null ]
     ] ],
@@ -47,8 +48,8 @@ var group__user__action =
       [ "newAction", "classhal_1_1_action_fold_module_factory.html#ac79f4fed6f9734e54d1f19a26da0d6b2", null ]
     ] ],
     [ "ActionMoveNode", "classhal_1_1_action_move_node.html", [
-      [ "ActionMoveNode", "classhal_1_1_action_move_node.html#a173e2c3d43479b59aa293aa2bd4e0c46", null ],
-      [ "ActionMoveNode", "classhal_1_1_action_move_node.html#aa5cab56db2fb167b5be39e58f1df15fb", null ],
+      [ "ActionMoveNode", "classhal_1_1_action_move_node.html#ad17917d6bde9fca4255099adcb214c45", null ],
+      [ "ActionMoveNode", "classhal_1_1_action_move_node.html#af568020e20979acdb871bd115dce3520", null ],
       [ "addToHash", "classhal_1_1_action_move_node.html#a109774c6bcea5d7e52a377a736944ce8", null ],
       [ "exec", "classhal_1_1_action_move_node.html#a4a142d83ad6c3f4b25070d1f305bf5cb", null ],
       [ "readFromXml", "classhal_1_1_action_move_node.html#a94d156e1c414fdf738ab0cb552d49030", null ],
@@ -60,7 +61,13 @@ var group__user__action =
       [ "newAction", "classhal_1_1_action_move_node_factory.html#a621a6ada067ea79c337b9966249ec85f", null ]
     ] ],
     [ "ActionOpenNetlistFile", "classhal_1_1_action_open_netlist_file.html", [
-      [ "ActionOpenNetlistFile", "classhal_1_1_action_open_netlist_file.html#aaff30dee0b97f5d4d64b510c4dd80bf2", null ],
+      [ "OpenMethod", "classhal_1_1_action_open_netlist_file.html#a6e9ea22754c75f08038b3241ffab9002", [
+        [ "Undefined", "classhal_1_1_action_open_netlist_file.html#a6e9ea22754c75f08038b3241ffab9002a80abaf86b9c279ec9179cfd58cbe3e58", null ],
+        [ "CreateNew", "classhal_1_1_action_open_netlist_file.html#a6e9ea22754c75f08038b3241ffab9002aceabf96fc832b06082c93af823e2b93d", null ],
+        [ "ImportFile", "classhal_1_1_action_open_netlist_file.html#a6e9ea22754c75f08038b3241ffab9002a23473341f5f5dd36635edddadbb6b82e", null ],
+        [ "OpenProject", "classhal_1_1_action_open_netlist_file.html#a6e9ea22754c75f08038b3241ffab9002a202cac57d0a20cf2dd5febbeb5fa36b8", null ]
+      ] ],
+      [ "ActionOpenNetlistFile", "classhal_1_1_action_open_netlist_file.html#a4de55e598877cd27fd24a705b5e6eac7", null ],
       [ "addToHash", "classhal_1_1_action_open_netlist_file.html#ac23ab8467d6ec7f49a74a42b3f002247", null ],
       [ "exec", "classhal_1_1_action_open_netlist_file.html#a5175b3539536a2b8581ec9026215cf58", null ],
       [ "readFromXml", "classhal_1_1_action_open_netlist_file.html#a2a49efecbb641a6de29ecbdd82b652c5", null ],
@@ -71,8 +78,21 @@ var group__user__action =
       [ "ActionOpenNetlistFileFactory", "classhal_1_1_action_open_netlist_file_factory.html#afa4b83298bdfbd53994936638a13111e", null ],
       [ "newAction", "classhal_1_1_action_open_netlist_file_factory.html#a25530402d4cf04518a65ef1081bc913f", null ]
     ] ],
+    [ "ActionPingroup", "classhal_1_1_action_pingroup.html", [
+      [ "ActionPingroup", "classhal_1_1_action_pingroup.html#a6f830d5d8f5e7a1dbe91c8a9619f7a41", null ],
+      [ "ActionPingroup", "classhal_1_1_action_pingroup.html#a3eccb312956a18ba689367c3b92db79a", null ],
+      [ "addToHash", "classhal_1_1_action_pingroup.html#aa86dbe3565fddd2c558ffeac76fac27d", null ],
+      [ "exec", "classhal_1_1_action_pingroup.html#af0412505d21b3a1448ee7b31ff37a269", null ],
+      [ "readFromXml", "classhal_1_1_action_pingroup.html#a59f267d5317415dfeeba0c2fc497eecb", null ],
+      [ "tagname", "classhal_1_1_action_pingroup.html#af874e0ba192c54838a4695be3ea5d8ff", null ],
+      [ "writeToXml", "classhal_1_1_action_pingroup.html#a69132868063b1e7b7e1d693f6ad5bb51", null ]
+    ] ],
+    [ "ActionPingroupFactory", "classhal_1_1_action_pingroup_factory.html", [
+      [ "ActionPingroupFactory", "classhal_1_1_action_pingroup_factory.html#aae5a77a1c5cc139726f65f50f1b6779a", null ],
+      [ "newAction", "classhal_1_1_action_pingroup_factory.html#a5ab1e41400a17bd0d1245e36090fca2b", null ]
+    ] ],
     [ "ActionRemoveItemsFromObject", "classhal_1_1_action_remove_items_from_object.html", [
-      [ "ActionRemoveItemsFromObject", "classhal_1_1_action_remove_items_from_object.html#af16e8b1b7b67108dac1bfdb5e3b69160", null ],
+      [ "ActionRemoveItemsFromObject", "classhal_1_1_action_remove_items_from_object.html#a1305a0005056e805911980cd4a11e3a2", null ],
       [ "addToHash", "classhal_1_1_action_remove_items_from_object.html#a0c752fb407f72761bbf40d3de2fc13f9", null ],
       [ "exec", "classhal_1_1_action_remove_items_from_object.html#ad2fe5592b507da3212c62108f13c3db0", null ],
       [ "readFromXml", "classhal_1_1_action_remove_items_from_object.html#ac4e0ef4389f68aedf4f63d3d0325430c", null ],
@@ -88,14 +108,24 @@ var group__user__action =
       [ "addToHash", "classhal_1_1_action_rename_object.html#ae1bc0fba8c8ba0bee6f1a780fac78aca", null ],
       [ "exec", "classhal_1_1_action_rename_object.html#adb5117279248a652098c0a03f087955f", null ],
       [ "readFromXml", "classhal_1_1_action_rename_object.html#a1f9ff521741c785859da7af9437154ef", null ],
-      [ "setInputNetId", "classhal_1_1_action_rename_object.html#a72a47b70cedb155375204f8b1de85f26", null ],
-      [ "setOutputNetId", "classhal_1_1_action_rename_object.html#a821d73730b9f994e962da1969ca734e6", null ],
       [ "tagname", "classhal_1_1_action_rename_object.html#a0906a60f591cd009cd91b30fad46e084", null ],
       [ "writeToXml", "classhal_1_1_action_rename_object.html#aa8bae0aa5edb3393eb0e3bd80b7d82e7", null ]
     ] ],
     [ "ActionRenameObjectFactory", "classhal_1_1_action_rename_object_factory.html", [
       [ "ActionRenameObjectFactory", "classhal_1_1_action_rename_object_factory.html#a9a1ae583a5004ec77b6cdeb543ff507b", null ],
       [ "newAction", "classhal_1_1_action_rename_object_factory.html#a06431ac1114a648740038e881426de9e", null ]
+    ] ],
+    [ "ActionReorderObject", "classhal_1_1_action_reorder_object.html", [
+      [ "ActionReorderObject", "classhal_1_1_action_reorder_object.html#a5b532bb56a4bfab7551e4191af413c93", null ],
+      [ "addToHash", "classhal_1_1_action_reorder_object.html#a55327acc72ccba1dc5bbfa3c60848826", null ],
+      [ "exec", "classhal_1_1_action_reorder_object.html#ac31816be94c95f503175291048a12af1", null ],
+      [ "readFromXml", "classhal_1_1_action_reorder_object.html#abeb5eea2aee7035f15e6ed51e5150718", null ],
+      [ "tagname", "classhal_1_1_action_reorder_object.html#a8a4c7f0d32df9f06257bfcc380364111", null ],
+      [ "writeToXml", "classhal_1_1_action_reorder_object.html#a647141d7bea99a593ce1b9c859ee7a6c", null ]
+    ] ],
+    [ "ActionReorderObjectFactory", "classhal_1_1_action_reorder_object_factory.html", [
+      [ "ActionReorderObjectFactory", "classhal_1_1_action_reorder_object_factory.html#a6d3b5091cef9de99e66a206585037a19", null ],
+      [ "newAction", "classhal_1_1_action_reorder_object_factory.html#af2448ab4b5cf4c119fece71d6be4a2b3", null ]
     ] ],
     [ "ActionSetObjectColor", "classhal_1_1_action_set_object_color.html", [
       [ "ActionSetObjectColor", "classhal_1_1_action_set_object_color.html#ab5551938e867ba2dbb47ffe60e041452", null ],
@@ -156,22 +186,29 @@ var group__user__action =
       [ "cryptographicHash", "classhal_1_1_user_action.html#a9c83f471c9af0bb49fe85243daf1ab28", null ],
       [ "debugDump", "classhal_1_1_user_action.html#a52ac961d4660b041559ddef7d68d3015", null ],
       [ "exec", "classhal_1_1_user_action.html#a98334eceabb245cd2683628439f8d7e7", null ],
-      [ "isWaitForReady", "classhal_1_1_user_action.html#adf664b569ddea94bbc560a882d67b315", null ],
+      [ "hasProjectModified", "classhal_1_1_user_action.html#adc01cc6722e67078be24a01ee991cf4b", null ],
       [ "object", "classhal_1_1_user_action.html#afc7d1d95f44329db056a944a3439f8ca", null ],
+      [ "parentObject", "classhal_1_1_user_action.html#a55efbfff23d01bbdd3cdec26c6b3fac0", null ],
       [ "readFromXml", "classhal_1_1_user_action.html#ad4976d95d07011dd9be187ddbcf75fde", null ],
+      [ "readParentObjectFromXml", "classhal_1_1_user_action.html#a20078295a03bb71886a9abfd2665f843", null ],
       [ "setCompoundOrder", "classhal_1_1_user_action.html#acbb007a480acf0f847434e86d71cf5bf", null ],
       [ "setObject", "classhal_1_1_user_action.html#abc1fb9965ce68186b8422114b58e2cc4", null ],
       [ "setObjectLock", "classhal_1_1_user_action.html#ae06ecbc33b153b3e8563f198bd0424f5", null ],
+      [ "setParentObject", "classhal_1_1_user_action.html#ad2939ce9d071a1236369b14a02fe297e", null ],
+      [ "setParentObjectLock", "classhal_1_1_user_action.html#a0944489db356477e23951b88698d506c", null ],
       [ "tagname", "classhal_1_1_user_action.html#a0a21a47562362b7a154f7843381c1e0b", null ],
       [ "timeStamp", "classhal_1_1_user_action.html#abab9958a26320a17089ebee61e035d2c", null ],
       [ "undoAction", "classhal_1_1_user_action.html#ad867eaa35212e5066de06e57fdb62b21", null ],
+      [ "writeParentObjectToXml", "classhal_1_1_user_action.html#a3cec3c2f826595eec152331e9dfbaeb7", null ],
       [ "writeToXml", "classhal_1_1_user_action.html#adfc0974e4c818064dd724ae9c8e43b23", null ],
       [ "mCompoundOrder", "classhal_1_1_user_action.html#ad7a49a6a643395eb9b8ab136c6ac36a9", null ],
       [ "mObject", "classhal_1_1_user_action.html#ad3e183ca84db2229ea52015ecf81b502", null ],
       [ "mObjectLock", "classhal_1_1_user_action.html#a49f5683828bd9940db72d46885ec6570", null ],
+      [ "mParentObject", "classhal_1_1_user_action.html#a7fa9e9eccea97bdae03784e2f8c09168", null ],
+      [ "mParentObjectLock", "classhal_1_1_user_action.html#aa46ad7aac49f66660c4429d55f12a40c", null ],
+      [ "mProjectModified", "classhal_1_1_user_action.html#a3490590a446995b5529e43eb5283d05d", null ],
       [ "mTimeStamp", "classhal_1_1_user_action.html#a086c2074270db533c9e41d4c0a60e3a5", null ],
-      [ "mUndoAction", "classhal_1_1_user_action.html#a84c02c70962a1d9b03bde33b693c81d0", null ],
-      [ "mWaitForReady", "classhal_1_1_user_action.html#a61f687463d570639e7cbbc7b0a05a563", null ]
+      [ "mUndoAction", "classhal_1_1_user_action.html#a84c02c70962a1d9b03bde33b693c81d0", null ]
     ] ],
     [ "UserActionFactory", "classhal_1_1_user_action_factory.html", [
       [ "UserActionFactory", "classhal_1_1_user_action_factory.html#a63c5d84670cea8fdee878557f1dd446c", null ],
@@ -183,10 +220,10 @@ var group__user__action =
       [ "UserActionCompound", "classhal_1_1_user_action_compound.html#a67a490ea054b92e408046c2fd234ec7b", null ],
       [ "addAction", "classhal_1_1_user_action_compound.html#a382766f52ee778cef7ca3a49295ccc65", null ],
       [ "exec", "classhal_1_1_user_action_compound.html#abdbb64e6236796c3784d1d66ba3bc2e6", null ],
-      [ "readFromXml", "classhal_1_1_user_action_compound.html#aca3e198035b9cbca63d9f33df013ffdf", null ],
+      [ "readFromXml", "classhal_1_1_user_action_compound.html#a3b817e201a254a11ef7e03776fb5e239", null ],
       [ "setUseCreatedObject", "classhal_1_1_user_action_compound.html#abd8267143380e23ad58a2e95a9683e32", null ],
       [ "tagname", "classhal_1_1_user_action_compound.html#a81742b58dabf6cb3c30ad744ebc95945", null ],
-      [ "writeToXml", "classhal_1_1_user_action_compound.html#a4be39ee6f8d79ffd0b432bd19e0b6962", null ],
+      [ "writeToXml", "classhal_1_1_user_action_compound.html#a90044b3cb3801a55b1f5a07929ee0ccf", null ],
       [ "mActionList", "classhal_1_1_user_action_compound.html#aa3f53057ccf26e72517e5a708bfcfe15", null ],
       [ "mUseCreatedObject", "classhal_1_1_user_action_compound.html#a1074bfc9fb2bbeeea7b8c5547d28fce2", null ]
     ] ],
@@ -197,8 +234,8 @@ var group__user__action =
     [ "UserActionManager", "classhal_1_1_user_action_manager.html", [
       [ "addExecutedAction", "classhal_1_1_user_action_manager.html#a0688dc0fa9585f5b75eed11e536ed6b3", null ],
       [ "canUndoLastAction", "classhal_1_1_user_action_manager.html#a474db8c46babe0e14afcbd14f2236f63", null ],
-      [ "clearWaitCount", "classhal_1_1_user_action_manager.html#a7ded721ef7419eca338d8cc794a67c7e", null ],
       [ "crashDump", "classhal_1_1_user_action_manager.html#af5d614246698ac63b34009aa17274438", null ],
+      [ "executeActionBlockThread", "classhal_1_1_user_action_manager.html#a4dafc6a034e9f1b0e0047bbd5b8ab0f4", null ],
       [ "getParsedAction", "classhal_1_1_user_action_manager.html#af261864564f37f00c287c03a99d2e22f", null ],
       [ "handleSettingDumpActionChanged", "classhal_1_1_user_action_manager.html#a354ed15e02b30e7db56f52e698cd5216", null ],
       [ "hasRecorded", "classhal_1_1_user_action_manager.html#ae4318c5e95504afe8f6973068d519c8f", null ],
@@ -206,8 +243,9 @@ var group__user__action =
       [ "playMacro", "classhal_1_1_user_action_manager.html#ab09aba251ce8d2d7fff07ace44a73c6b", null ],
       [ "registerFactory", "classhal_1_1_user_action_manager.html#a0e6b8eb675e81722703fd5b19ecc0c68", null ],
       [ "setStartRecording", "classhal_1_1_user_action_manager.html#a020a96ea58892acabbe350cd28b7c712", null ],
-      [ "setStopRecording", "classhal_1_1_user_action_manager.html#a2fba054ba0f743120bd149f4dc6079ac", null ],
+      [ "setStopRecording", "classhal_1_1_user_action_manager.html#abafecd55ef7291cce1570df93623dc9e", null ],
       [ "timeStamp", "classhal_1_1_user_action_manager.html#ae810fa314e08add41373a4e1db7c516d", null ],
+      [ "triggerExecute", "classhal_1_1_user_action_manager.html#acfd77eb251e31e00735ffa62c5603f5e", null ],
       [ "undoLastAction", "classhal_1_1_user_action_manager.html#a1806f69156c7a564fcdba056fda7db5d", null ]
     ] ],
     [ "UserActionObjectType", "classhal_1_1_user_action_object_type.html", [
@@ -219,7 +257,6 @@ var group__user__action =
         [ "Grouping", "classhal_1_1_user_action_object_type.html#a2de00e63df4cf86816f688fad6754d79a27ddb6799ad5d95abaead6018bd2e1cb", null ],
         [ "Netlist", "classhal_1_1_user_action_object_type.html#a2de00e63df4cf86816f688fad6754d79a426b6abb3378b291a0acb72226364926", null ],
         [ "Context", "classhal_1_1_user_action_object_type.html#a2de00e63df4cf86816f688fad6754d79ad1400bac44832ef79eafb8ac4d59dee2", null ],
-        [ "Port", "classhal_1_1_user_action_object_type.html#a2de00e63df4cf86816f688fad6754d79aca81723db63b99920f6c633b1cff91c4", null ],
         [ "MaxObjectType", "classhal_1_1_user_action_object_type.html#a2de00e63df4cf86816f688fad6754d79a1f454bf3fc9403944e7d3d7462f98318", null ]
       ] ],
       [ "Q_ENUM", "classhal_1_1_user_action_object_type.html#a5ce96df086b155ae9d71c38ee9b2940a", null ]

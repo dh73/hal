@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['library_5ffile_5fextension_36166',['LIBRARY_FILE_EXTENSION',['../arch__linux_8h.html#a8482578c5c42538609e6e0abedcfc132',1,'LIBRARY_FILE_EXTENSION():&#160;arch_linux.h'],['../arch__mac_8h.html#a8482578c5c42538609e6e0abedcfc132',1,'LIBRARY_FILE_EXTENSION():&#160;arch_mac.h'],['../arch__win_8h.html#a8482578c5c42538609e6e0abedcfc132',1,'LIBRARY_FILE_EXTENSION():&#160;arch_win.h']]],
-  ['log_5fchannel_36167',['LOG_CHANNEL',['../log_8h.html#ab459fae788a7a0b6e60d70c6bb53a5d2',1,'log.h']]]
+  ['json_5fstr_5fhelper_39574',['JSON_STR_HELPER',['../netlist_2persistent_2netlist__serializer_8cpp.html#ad9bde63b1c828a1328bf592ad5325fa6',1,'netlist_serializer.cpp']]]
 ];

@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('widget__overlay_8cpp_source.html','');
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        mLayout(new <a class="codeRef" href="https://doc.qt.io/qt-5/qvboxlayout.html">QVBoxLayout</a>(this)),</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        mWidget(nullptr)</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="comment">//setStyleSheet(&quot;background-color: rgba(0, 0, 0, 150);&quot;);</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    }</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classhal_1_1_widget_overlay.html#ad2a426756b018ad2979e548682a9bb01">   14</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classhal_1_1_widget_overlay.html#ad2a426756b018ad2979e548682a9bb01">WidgetOverlay::setWidget</a>(<a class="codeRef" href="https://doc.qt.io/qt-5/qwidget.html">QWidget</a>* widget)</div>
@@ -114,27 +114,28 @@ $(document).ready(function(){initNavTree('widget__overlay_8cpp_source.html','');
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        mLayout-&gt;<a class="codeRef" href="https://doc.qt.io/qt-5/qlayout.html#setAlignment">setAlignment</a>(widget, <a class="codeRef" href="https://doc.qt.io/qt-5/qt.html#AlignmentFlag-enum">Qt::AlignCenter</a>);</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        mWidget-&gt;<a class="codeRef" href="https://doc.qt.io/qt-5/qwidget.html#show">show</a>();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="comment">// OLD</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="comment">//    mWidget-&gt;setParent(this);</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="comment">//    mWidget-&gt;resize(mWidget-&gt;sizeHint());</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">//void WidgetOverlay::resizeEvent(QResizeEvent* event)</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">//{</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">//}</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">//mWidget-&gt;setStyleSheet(&quot;background-color: rgba(43, 43, 43, 255);&quot;);</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="comment">// OLD</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="comment">//    mWidget-&gt;setParent(this);</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="comment">//    mWidget-&gt;resize(mWidget-&gt;sizeHint());</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">//void WidgetOverlay::resizeEvent(QResizeEvent* event)</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">//{</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">//}</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aqt_html_AlignmentFlag-enum"><div class="ttname"><a href="https://doc.qt.io/qt-5/qt.html#AlignmentFlag-enum">Qt::AlignCenter</a></div><div class="ttdeci">AlignCenter</div></div>
 <div class="ttc" id="aqwidget_html_setParent"><div class="ttname"><a href="https://doc.qt.io/qt-5/qwidget.html#setParent">QWidget::setParent</a></div><div class="ttdeci">void setParent(QWidget *parent)</div></div>
 <div class="ttc" id="aqvboxlayout_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qvboxlayout.html">QVBoxLayout</a></div></div>
 <div class="ttc" id="aqwidget_html_sizePolicy-prop"><div class="ttname"><a href="https://doc.qt.io/qt-5/qwidget.html#sizePolicy-prop">QWidget::setSizePolicy</a></div><div class="ttdeci">void setSizePolicy(QSizePolicy)</div></div>
-<div class="ttc" id="aclasshal_1_1_overlay_html"><div class="ttname"><a href="classhal_1_1_overlay.html">hal::Overlay</a></div><div class="ttdoc">The Overlay overlays its parent.</div><div class="ttdef"><b>Definition:</b> <a href="overlay_8h_source.html#l00037">overlay.h:37</a></div></div>
+<div class="ttc" id="aclasshal_1_1_overlay_html"><div class="ttname"><a href="classhal_1_1_overlay.html">hal::Overlay</a></div><div class="ttdoc">The Overlay overlays its parent.</div><div class="ttdef"><b>Definition:</b> <a href="overlay_8h_source.html#l00039">overlay.h:39</a></div></div>
 <div class="ttc" id="awidget__overlay_8h_html"><div class="ttname"><a href="widget__overlay_8h.html">widget_overlay.h</a></div></div>
 <div class="ttc" id="aqwidget_html"><div class="ttname"><a href="https://doc.qt.io/qt-5/qwidget.html">QWidget</a></div></div>
-<div class="ttc" id="anamespacehal_html"><div class="ttname"><a href="namespacehal.html">hal</a></div><div class="ttdef"><b>Definition:</b> <a href="solver_8cpp_source.html#l00009">solver.cpp:9</a></div></div>
+<div class="ttc" id="anamespacehal_html"><div class="ttname"><a href="namespacehal.html">hal</a></div><div class="ttdef"><b>Definition:</b> <a href="parser__liberty_8cpp_source.html#l00009">parser_liberty.cpp:9</a></div></div>
 <div class="ttc" id="aqwidget_html_hide"><div class="ttname"><a href="https://doc.qt.io/qt-5/qwidget.html#hide">QWidget::hide</a></div><div class="ttdeci">void hide()</div></div>
 <div class="ttc" id="aqboxlayout_html_addWidget"><div class="ttname"><a href="https://doc.qt.io/qt-5/qboxlayout.html#addWidget">QBoxLayout::addWidget</a></div><div class="ttdeci">void addWidget(QWidget *widget, int stretch, Qt::Alignment alignment)</div></div>
 <div class="ttc" id="aclasshal_1_1_widget_overlay_html_a7de74f4f0a26ddc50ff3c531d1cb2408"><div class="ttname"><a href="classhal_1_1_widget_overlay.html#a7de74f4f0a26ddc50ff3c531d1cb2408">hal::WidgetOverlay::WidgetOverlay</a></div><div class="ttdeci">WidgetOverlay(QWidget *parent=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="widget__overlay_8cpp_source.html#l00007">widget_overlay.cpp:7</a></div></div>
@@ -146,7 +147,7 @@ $(document).ready(function(){initNavTree('widget__overlay_8cpp_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_38c8d24aef3972a7f87b834274e76e31.html">plugins</a></li><li class="navelem"><a class="el" href="dir_6bd2b93008728295189e380cf3731a95.html">gui</a></li><li class="navelem"><a class="el" href="dir_8f3a6e7567706389d7af07afaa901854.html">src</a></li><li class="navelem"><a class="el" href="dir_1c9b88aaa7e03862471afceea6cd4425.html">overlay</a></li><li class="navelem"><a class="el" href="widget__overlay_8cpp.html">widget_overlay.cpp</a></li>
-    <li class="footer">Generated on Thu Nov 18 2021 17:54:33 for HAL by
+    <li class="footer">Generated on Thu Apr 4 2024 06:41:52 for HAL by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

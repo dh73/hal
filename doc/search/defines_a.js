@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['plugin_5fapi_36172',['PLUGIN_API',['../arch__linux_8h.html#afcb1b0bf7320fa3ebfc13fd896ebca4d',1,'PLUGIN_API():&#160;arch_linux.h'],['../arch__mac_8h.html#afcb1b0bf7320fa3ebfc13fd896ebca4d',1,'PLUGIN_API():&#160;arch_mac.h'],['../arch__win_8h.html#afcb1b0bf7320fa3ebfc13fd896ebca4d',1,'PLUGIN_API():&#160;arch_win.h']]],
-  ['pretty_5fjson_5foutput_36173',['PRETTY_JSON_OUTPUT',['../netlist_2persistent_2netlist__serializer_8cpp.html#a442c4f02c70cb01b96e1d3068b619d20',1,'PRETTY_JSON_OUTPUT():&#160;netlist_serializer.cpp'],['../hal__file__manager_8cpp.html#a442c4f02c70cb01b96e1d3068b619d20',1,'PRETTY_JSON_OUTPUT():&#160;hal_file_manager.cpp']]],
-  ['protected_36174',['PROTECTED',['../defines_8h.html#af0cbb16b703892a6f3be7149dbe7d1a3',1,'defines.h']]]
+  ['netlist_5fapi_39582',['NETLIST_API',['../arch__linux_8h.html#a3541b40303f35100314d8bb7efd18371',1,'NETLIST_API():&#160;arch_linux.h'],['../arch__mac_8h.html#a3541b40303f35100314d8bb7efd18371',1,'NETLIST_API():&#160;arch_mac.h'],['../arch__win_8h.html#a3541b40303f35100314d8bb7efd18371',1,'NETLIST_API():&#160;arch_win.h']]],
+  ['not_5fexported_39583',['NOT_EXPORTED',['../defines_8h.html#a7a18783e5822ba5ea364d35854897085',1,'defines.h']]]
 ];

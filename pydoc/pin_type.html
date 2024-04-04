@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Pin Type &mdash; hal_py v3.3.0-21-gf98759867 documentation</title>
+  <title>Pin Type &mdash; hal_py v3.3.0-1689-g95b424a36 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                v3.3.0-21-gf98759867
+                v3.3.0-1689-g95b424a36
               </div>
             
           
@@ -88,27 +88,36 @@
 <li class="toctree-l1 current"><a class="reference internal" href="hal_py.html">HAL Core Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="base_plugin_interface.html">Base Plugin Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="boolean_function.html">Boolean Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boolean_function_decorator.html">Boolean Function Decorator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boolean_function_net_decorator.html">Boolean Function Net Decorator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="core_utils.html">Core Utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_container.html">Data Container</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint.html">Endpoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gate.html">Gate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gate_library.html">Gate Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gate_library_manager.html">Gate Library Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gate_pin.html">Gate Pin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gate_pin_group.html">Gate Pin Group</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gate_type.html">Gate Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gate_type_component.html">Gate Type Component</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gate_type_property.html">Gate Type Property</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grouping.html">Grouping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gui_plugin_interface.html">GUI Plugin Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="module.html">Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_pin.html">Module Pin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_pin_group.html">Module Pin Group</a></li>
 <li class="toctree-l2"><a class="reference internal" href="net.html">Net</a></li>
 <li class="toctree-l2"><a class="reference internal" href="netlist.html">Netlist</a></li>
 <li class="toctree-l2"><a class="reference internal" href="netlist_factory.html">Netlist Factory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netlist_modification_decorator.html">Netlist Modification Decorator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="netlist_utils.html">Netlist Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netlist_serializer.html">Netlist Serializer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="netlist_writer_manager.html">Netlist Writer Manager</a></li>
-<li class="toctree-l2"><a class="reference internal" href="path.html">HAL Path</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pin_direction.html">Pin Direction</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Pin Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plugin_manager.html">Plugin Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project_manager.html">Project Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smt.html">SMT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subgraph_netlist_decorator.html">Subgraph Netlist Decorator</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="plugins.html">HAL Plugins Documentation</a></li>
@@ -200,12 +209,13 @@
 <p>address : Address pin.</p>
 <p>io_pad : IO pad pin.</p>
 <p>select : Select pin.</p>
+<p>carry : Carry pad pin.</p>
+<p>sum : Sum pin.</p>
 </div></blockquote>
 <dl class="attribute">
 <dt id="hal_py.PinType.name">
 <code class="descname">name</code><a class="headerlink" href="#hal_py.PinType.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>(self: handle) -&gt; str</p>
-</dd></dl>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -231,7 +241,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2021, Marc Fyrbiak, Sebastian Wallat, Max Hoffmann
+        &copy; Copyright 2024, Marc Fyrbiak, Sebastian Wallat, Max Hoffmann
 
     </p>
   </div>

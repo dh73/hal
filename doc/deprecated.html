@@ -87,25 +87,27 @@ $(document).ready(function(){initNavTree('deprecated.html',''); initResizable();
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt>Member <a class="el" href="classhal_1_1_boolean_function.html#a21f27997ed6b4f364395ea3948084cda">hal::BooleanFunction::operator!</a>  () const</dt>
-<dd><a class="anchor" id="_deprecated000002"></a> DEPRECATED <br  />
- Negate the Boolean function. </dd>
-<dt>Member <a class="el" href="classhal_1_1_gate.html#a0a6692d6ed8bff35f957d205fbaeeedb">hal::Gate::get_input_pins</a>  () const</dt>
+<dt>Member <a class="el" href="classhal_1_1_boolean_function.html#a7fc879a01fcd059435970f03e683043f">hal::BooleanFunction::to_z3</a>  (z3::context &amp;context, const std::map&lt; std::string, z3::expr &gt; &amp;var2expr={}) const</dt>
 <dd><a class="anchor" id="_deprecated000003"></a> DEPRECATED <br  />
- Get a list of all input pin types of the gate. </dd>
-<dt>Member <a class="el" href="classhal_1_1_gate.html#adf0f213a84590849b95adba5756f4f8e">hal::Gate::get_output_pins</a>  () const</dt>
-<dd><a class="anchor" id="_deprecated000004"></a> DEPRECATED <br  />
- Get a list of all output pin types of the gate. </dd>
+ Translates the Boolean function into the z3 expression representation. </dd>
 <dt>Member <a class="el" href="classhal_1_1_graphics_scene.html#aadb7a14bcc7cd28a5ecb04af9c09ed2d">hal::GraphicsScene::snapToGrid</a>  (const <a class="elRef" href="https://doc.qt.io/qt-5/qpointf.html">QPointF</a> &amp;pos) Q_DECL_DEPRECATED</dt>
 <dd><a class="anchor" id="_deprecated000001"></a>Please use GraphGraphicsView::closestLayouterPos instead. </dd>
-<dt>Member <a class="el" href="classhal_1_1_net.html#a261285edd2702cf3bfcf47a646a55234">hal::Net::get_source</a>  () const</dt>
-<dd><a class="anchor" id="_deprecated000005"></a> DEPRECATED <br  />
- Get the (first) source-endpoint of the net. <br  />
- If there was no source assigned, the gate element of the returned endpoint is a nullptr. <br  />
- If the net is multi-driven a warning is printed. </dd>
-<dt>Member <a class="el" href="namespacehal_1_1netlist__utils.html#a7252fdca08ea0f7e5c0aa4720083d23c">hal::netlist_utils::rename_luts_according_to_function</a>  (<a class="el" href="classhal_1_1_netlist.html">Netlist</a> *netlist)</dt>
-<dd><a class="anchor" id="_deprecated000006"></a> DEPRECATED <br  />
- Rename LUTs that implement simple functions to better reflect their functionality.</dd>
+<dt>Member <a class="el" href="namespacehal_1_1netlist__utils.html#a491fd812517e94f3ee40e64813d7f9c5">hal::netlist_utils::copy_netlist</a>  (const <a class="el" href="classhal_1_1_netlist.html">Netlist</a> *nl)</dt>
+<dd><a class="anchor" id="_deprecated000006"></a> Get a deep copy of an entire netlist including all of its gates, nets, modules, and groupings. </dd>
+<dt>Member <a class="el" href="namespacehal_1_1netlist__utils.html#a11b7573f3ebb05f841f575e072767795">hal::netlist_utils::get_partial_netlist</a>  (const <a class="el" href="classhal_1_1_netlist.html">Netlist</a> *nl, const std::vector&lt; const Gate * &gt; &amp;subgraph_gates)</dt>
+<dd><a class="anchor" id="_deprecated000007"></a> Get a deep copy of an entire partial netlist including all of its gates, nets, excluding modules and groupings. </dd>
+<dt>Member <a class="el" href="namespacehal_1_1netlist__utils.html#ab8c3054566941b75019e3f599ec16814">hal::netlist_utils::get_subgraph_function</a>  (const <a class="el" href="classhal_1_1_net.html">Net</a> *net, const std::vector&lt; const Gate * &gt; &amp;subgraph_gates, std::map&lt; std::pair&lt; u32, const GatePin * &gt;, <a class="el" href="classhal_1_1_boolean_function.html">BooleanFunction</a> &gt; &amp;cache)</dt>
+<dd><a class="anchor" id="_deprecated000004"></a> Get the combined Boolean function of a subgraph of combinational gates starting at the source of the given net. The variables of the resulting Boolean function are made up of the IDs of the nets that influence the output ('net_[ID]'). Utilizes a cache for speedup on consecutive calls. </dd>
+<dt>Member <a class="el" href="namespacehal_1_1netlist__utils.html#a77025d97353281c42b543f073de27099">hal::netlist_utils::get_subgraph_function</a>  (const <a class="el" href="classhal_1_1_net.html">Net</a> *net, const std::vector&lt; const Gate * &gt; &amp;subgraph_gates)</dt>
+<dd><a class="anchor" id="_deprecated000005"></a> Get the combined Boolean function of a subgraph of combinational gates starting at the source of the given net. The variables of the resulting Boolean function are made up of the IDs of the nets that influence the output ('net_[ID]'). </dd>
+<dt>Member <a class="el" href="namespacehal_1_1netlist__utils.html#af985cd5c5eb7aa39f151f9fc890e6005">hal::netlist_utils::remove_buffers</a>  (<a class="el" href="classhal_1_1_netlist.html">Netlist</a> *netlist, bool analyze_inputs)</dt>
+<dd><a class="anchor" id="_deprecated000008"></a> Remove all buffer gates from the netlist and connect their fan-in to their fan-out nets. If enabled, analyzes every gate's inputs and removes fixed '0' or '1' inputs from the Boolean function. </dd>
+<dt>Member <a class="el" href="namespacehal_1_1netlist__utils.html#ab4c23f16593143c305d3d5de79dcb196">hal::netlist_utils::remove_unused_lut_endpoints</a>  (<a class="el" href="classhal_1_1_netlist.html">Netlist</a> *netlist)</dt>
+<dd><a class="anchor" id="_deprecated000009"></a> Remove all LUT fan-in endpoints that are not present within the Boolean function of the output of a gate. </dd>
+<dt>Member <a class="el" href="namespacehal_1_1netlist__utils.html#a91da9ccb1b2005faf2ec66b2e0618aba">hal::netlist_utils::replace_gate</a>  (<a class="el" href="classhal_1_1_gate.html">Gate</a> *gate, <a class="el" href="classhal_1_1_gate_type.html">GateType</a> *target_type, std::map&lt; GatePin *, GatePin * &gt; pin_map)</dt>
+<dd><a class="anchor" id="_deprecated000010"></a> Replace the given gate with a gate of the specified gate type. A map from old to new pins must be provided in order to correctly connect the gates inputs and outputs. A pin can be omitted if no connection at that pin is desired. </dd>
+<dt>Member <a class="el" href="classhal_1_1plugin__dataflow.html#a5ce7d03e6d0eed45518ac167088bc450">hal::plugin_dataflow::execute</a>  (<a class="el" href="classhal_1_1_netlist.html">Netlist</a> *nl, std::string out_path, const std::vector&lt; u32 &gt; sizes, bool draw_graph, bool create_modules=false, bool register_stage_identification=false, std::vector&lt; std::vector&lt; u32 &gt;&gt; known_groups={}, u32 min_group_size=8)</dt>
+<dd><a class="anchor" id="_deprecated000002"></a> </dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
@@ -113,7 +115,7 @@ $(document).ready(function(){initNavTree('deprecated.html',''); initResizable();
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Nov 18 2021 17:54:34 for HAL by
+    <li class="footer">Generated on Thu Apr 4 2024 06:41:54 for HAL by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
